@@ -45,7 +45,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
         String remarks = introspectedColumn.getRemarks();
         //根据参数和备注信息判断是否添加备注信息
         if (addRemarkComments && StringUtility.stringHasValue(remarks)) {
-            addFieldJavaDoc(field, remarks);
+//            addFieldJavaDoc(field, remarks);
             //数据库中特殊字符需要转义
             if (remarks.contains("\"")) {
                 remarks = remarks.replace("\"", "'");

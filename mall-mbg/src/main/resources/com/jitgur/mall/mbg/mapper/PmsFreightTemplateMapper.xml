@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jitgur.mall.mbg.mapper.PmsFreightTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.jitgur.mall.mbg.model.PmsFreightTemplate">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="charge_type" jdbcType="INTEGER" property="chargeType" />
+    <result column="first_weight" jdbcType="DECIMAL" property="firstWeight" />
+    <result column="first_fee" jdbcType="DECIMAL" property="firstFee" />
+    <result column="continue_weight" jdbcType="DECIMAL" property="continueWeight" />
+    <result column="continue_fee" jdbcType="DECIMAL" property="continueFee" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, charge_type, first_weight, first_fee, continue_weight, continue_fee, destination
+  </sql>
+  <select id="selectByExample" parameterType="com.jitgur.mall.mbg.model.PmsFreightTemplateExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pms_freight_template
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_freight_template
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pms_freight_template
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jitgur.mall.mbg.model.PmsFreightTemplateExample">
+    delete from pms_freight_template
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jitgur.mall.mbg.model.PmsFreightTemplate">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into pms_freight_template (name, charge_type, first_weight, 
+      first_fee, continue_weight, continue_fee, 
+      destination)
+    values (#{name,jdbcType=VARCHAR}, #{chargeType,jdbcType=INTEGER}, #{firstWeight,jdbcType=DECIMAL}, 
+      #{firstFee,jdbcType=DECIMAL}, #{continueWeight,jdbcType=DECIMAL}, #{continueFee,jdbcType=DECIMAL}, 
+      #{destination,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jitgur.mall.mbg.model.PmsFreightTemplate">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into pms_freight_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="chargeType != null">
+        charge_type,
+      </if>
+      <if test="firstWeight != null">
+        first_weight,
+      </if>
+      <if test="firstFee != null">
+        first_fee,
+      </if>
+      <if test="continueWeight != null">
+        continue_weight,
+      </if>
+      <if test="continueFee != null">
+        continue_fee,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeType != null">
+        #{chargeType,jdbcType=INTEGER},
+      </if>
+      <if test="firstWeight != null">
+        #{firstWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="firstFee != null">
+        #{firstFee,jdbcType=DECIMAL},
+      </if>
+      <if test="continueWeight != null">
+        #{continueWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="continueFee != null">
+        #{continueFee,jdbcType=DECIMAL},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jitgur.mall.mbg.model.PmsFreightTemplateExample" resultType="java.lang.Long">
+    select count(*) from pms_freight_template
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pms_freight_template
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
+      </if>
+      <if test="row.chargeType != null">
+        charge_type = #{row.chargeType,jdbcType=INTEGER},
+      </if>
+      <if test="row.firstWeight != null">
+        first_weight = #{row.firstWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="row.firstFee != null">
+        first_fee = #{row.firstFee,jdbcType=DECIMAL},
+      </if>
+      <if test="row.continueWeight != null">
+        continue_weight = #{row.continueWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="row.continueFee != null">
+        continue_fee = #{row.continueFee,jdbcType=DECIMAL},
+      </if>
+      <if test="row.destination != null">
+        destination = #{row.destination,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pms_freight_template
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      charge_type = #{row.chargeType,jdbcType=INTEGER},
+      first_weight = #{row.firstWeight,jdbcType=DECIMAL},
+      first_fee = #{row.firstFee,jdbcType=DECIMAL},
+      continue_weight = #{row.continueWeight,jdbcType=DECIMAL},
+      continue_fee = #{row.continueFee,jdbcType=DECIMAL},
+      destination = #{row.destination,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jitgur.mall.mbg.model.PmsFreightTemplate">
+    update pms_freight_template
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeType != null">
+        charge_type = #{chargeType,jdbcType=INTEGER},
+      </if>
+      <if test="firstWeight != null">
+        first_weight = #{firstWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="firstFee != null">
+        first_fee = #{firstFee,jdbcType=DECIMAL},
+      </if>
+      <if test="continueWeight != null">
+        continue_weight = #{continueWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="continueFee != null">
+        continue_fee = #{continueFee,jdbcType=DECIMAL},
+      </if>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jitgur.mall.mbg.model.PmsFreightTemplate">
+    update pms_freight_template
+    set name = #{name,jdbcType=VARCHAR},
+      charge_type = #{chargeType,jdbcType=INTEGER},
+      first_weight = #{firstWeight,jdbcType=DECIMAL},
+      first_fee = #{firstFee,jdbcType=DECIMAL},
+      continue_weight = #{continueWeight,jdbcType=DECIMAL},
+      continue_fee = #{continueFee,jdbcType=DECIMAL},
+      destination = #{destination,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
