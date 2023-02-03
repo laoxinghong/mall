@@ -22,9 +22,9 @@
 
     <modules>
         <!--        <module>mall-admin</module>-->
-<!--        <module>mall-common</module>-->
+        <module>mall-common</module>
         <!--        <module>mall-demo</module>-->
-        <!--        <module>mall-mbg</module>-->
+        <module>mall-mbg</module>
         <!--        <module>mall-portal</module>-->
         <!--        <module>mall-search</module>-->
         <!--        <module>mall-security</module>-->
