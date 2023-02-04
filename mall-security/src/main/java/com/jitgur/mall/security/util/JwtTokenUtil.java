@@ -97,7 +97,7 @@ public class JwtTokenUtil {
      * @param token       客户端传来的token
      * @param userDetails 从数据库中查询出来的用户信息
      */
-    public boolean ValidateToken(String token, UserDetails userDetails) {
+    public boolean validateToken(String token, UserDetails userDetails) {
         String username = getUsernameFromToken(token);
         return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
