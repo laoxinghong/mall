@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: mall-admin
+  profiles:
+    active: dev #默认为开发环境
+  servlet:
+    multipart:
+      enabled: true #开启文件上传
+      max-file-size: 10MB #限制上传文件大小
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+mybatis:
+  mapper-locations:
+    -classpath:dao/*.xml
+    -classpath*:com/**/mapper/*.xml
+
+jwt:
+  tokenHeader: Authorization #jwt存储的请求头
+  secret: mall-admin-secret #jwt加解密使用的密钥
+  expiration: 604800 #jwt的超时时间(60*60*24*7)
+  tokenHead: 'Bearer' #jwt负载中拿到的开头
+
+secure:
+  ignore:
+    url: #安全路径白名单
+      -/swagger-ui/
+      -/swagger-resources/**
+      -/**/v2/api-docs
+      -/**/*.html
+      -/**/*.js
+      -/**/*.css
+      -/**/*.png
+      -/**/*.map
+      -/favicon.ico
+      -/druid/**
+      -/actuator/**
+      -/sso/**
+      -/home/**
+      -/product/**
+      -/brand/**
+
+# redis key
+redis:
+  database: mall
+  key:
+    admin: 'ums:admin'
+    resourceList: 'ums:resourceList''
+  expire:
+    common: 86400
+
+
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com #oss对外服务的访问域名
+    accessKeyId: test #访问身份验证中用到的用户标识
+    accessKeySecret: test #用户用于加密签名字符串与oss用户验证签名字符串使用的密钥
+    bucketName: mall-jitgur #oss存储空间
+    policy:
+      expire: 300 #签名有效期
+    maxSize: 10 #上传文件限制大小
+    callback: http://39.98.190.128:8080/aliyun/oss/callback #文件上传成功后的回调地址
+    dir:
+      prefix: mall/images/ #上传文件夹路径前缀
