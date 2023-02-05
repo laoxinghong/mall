@@ -35,32 +35,32 @@ public abstract class BaseSwaggerConfig {
     public abstract SwaggerProperties swaggerProperties();
 
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         SwaggerProperties swaggerProperties = swaggerProperties();
-        Docket docket=new Docket(DocumentationType.SWAGGER_2)
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo(swaggerProperties))
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getApiBasePackage()))
                 .paths(PathSelectors.any())
                 .build();
-        if(swaggerProperties.isEnableSecurity()){
+        if (swaggerProperties.isEnableSecurity()) {
             docket.securitySchemes(securitySchemes()).securityContexts(securityContexts());
         }
         return docket;
     }
 
 
-    public ApiInfo apiInfo(SwaggerProperties swaggerProperties){
+    public ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
         return new ApiInfoBuilder()
                 .title(swaggerProperties.getTitle())
                 .description(swaggerProperties.getDescription())
-                .contact(new Contact(swaggerProperties.getContactName(),swaggerProperties.getContactUrl(),swaggerProperties.getContactEmail()))
+                .contact(new Contact(swaggerProperties.getContactName(), swaggerProperties.getContactUrl(), swaggerProperties.getContactEmail()))
                 .version(swaggerProperties.getVersion())
                 .build();
     }
 
 
-    public List<SecurityScheme> securitySchemes(){
+    public List<SecurityScheme> securitySchemes() {
         // 设置请求头信息
         List<SecurityScheme> securitySchemes = new ArrayList<>();
         ApiKey apiKey = new ApiKey("Authorization", "Authorization", "header");
@@ -68,54 +68,54 @@ public abstract class BaseSwaggerConfig {
         return securitySchemes;
     }
 
-    public List<SecurityContext> securityContexts(){
+    public List<SecurityContext> securityContexts() {
         // 设置需要登录认证的路径
         List<SecurityContext> securityContexts = new ArrayList<>();
         securityContexts.add(getContextByPath("/*/.*"));
         return securityContexts;
     }
 
-    public SecurityContext getContextByPath(String pathRegex){
+    public SecurityContext getContextByPath(String pathRegex) {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
                 .forPaths(PathSelectors.regex(pathRegex))
                 .build();
     }
 
-    public List<SecurityReference> defaultAuth(){
+    public List<SecurityReference> defaultAuth() {
         List<SecurityReference> securityReferences = new ArrayList<>();
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-        authorizationScopes[0]=authorizationScope;
-        securityReferences.add(new SecurityReference("Authorization",authorizationScopes));
+        authorizationScopes[0] = authorizationScope;
+        securityReferences.add(new SecurityReference("Authorization", authorizationScopes));
         return securityReferences;
     }
 
-    public BeanPostProcessor generateBeanPostProcessor(){
+    public BeanPostProcessor generateBeanPostProcessor() {
         return new BeanPostProcessor() {
             @Override
             public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-                if(bean  instanceof WebMvcRequestHandlerProvider || bean instanceof WebFluxRequestHandlerProvider){
+                if (bean instanceof WebMvcRequestHandlerProvider || bean instanceof WebFluxRequestHandlerProvider) {
                     customizeSpringfoxHandlerMappings(getHandlerMappings(bean));
                 }
                 return bean;
             }
 
-            private<T extends RequestMappingInfoHandlerMapping> void customizeSpringfoxHandlerMappings(List<T> mappings){
-                List<T> copy=mappings.stream()
-                        .filter(mapping->mapping.getPatternParser()==null)
+            private <T extends RequestMappingInfoHandlerMapping> void customizeSpringfoxHandlerMappings(List<T> mappings) {
+                List<T> copy = mappings.stream()
+                        .filter(mapping -> mapping.getPatternParser() == null)
                         .collect(Collectors.toList());
                 mappings.clear();
                 mappings.addAll(copy);
             }
 
             @SuppressWarnings("unchecked")
-            private List<RequestMappingInfoHandlerMapping> getHandlerMappings(Object bean){
-                try{
+            private List<RequestMappingInfoHandlerMapping> getHandlerMappings(Object bean) {
+                try {
                     Field field = ReflectionUtils.findField(bean.getClass(), "handlerMappings");
                     field.setAccessible(true);
                     return (List<RequestMappingInfoHandlerMapping>) field.get(bean);
-                }catch (IllegalArgumentException | IllegalAccessException exception){
+                } catch (IllegalArgumentException | IllegalAccessException exception) {
                     throw new IllegalStateException(exception);
                 }
             }
