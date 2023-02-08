@@ -8,7 +8,7 @@ import com.jitgur.mall.admin.bo.AdminUserDetails;
 import com.jitgur.mall.admin.dao.UmsAdminResourceRelationDao;
 import com.jitgur.mall.admin.dao.UmsAdminRoleRelationDao;
 import com.jitgur.mall.admin.dto.UmsAdminParam;
-import com.jitgur.mall.admin.dto.UpdateAdminPasswordParam;
+import com.jitgur.mall.admin.dto.UmsUpdateAdminPasswordParam;
 import com.jitgur.mall.admin.service.UmsAdminCacheService;
 import com.jitgur.mall.admin.service.UmsAdminService;
 import com.jitgur.mall.common.exception.Asserts;
@@ -180,7 +180,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
 
     @Override
-    public int updatePassword(UpdateAdminPasswordParam updateParam) {
+    public int updatePassword(UmsUpdateAdminPasswordParam updateParam) {
         if (updateParam.getNewPassword().equals(updateParam.getOldPassword())) {
             Asserts.fail("新旧密码不能相同");
         }

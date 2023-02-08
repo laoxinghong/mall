@@ -1,7 +1,8 @@
 package com.jitgur.mall.admin.controller;
 
+import com.jitgur.mall.admin.dto.UmsAdminLoginParam;
 import com.jitgur.mall.admin.dto.UmsAdminParam;
-import com.jitgur.mall.admin.dto.UpdateAdminPasswordParam;
+import com.jitgur.mall.admin.dto.UmsUpdateAdminPasswordParam;
 import com.jitgur.mall.admin.service.UmsAdminService;
 import com.jitgur.mall.common.api.CommonResult;
 import com.jitgur.mall.mbg.model.UmsAdmin;
@@ -12,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +35,8 @@ public class UmsAdminController {
     @ApiOperation("分页显示所有用户")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<List<UmsAdmin>> list(@RequestParam("pageNum") Integer pageNum,
-                                             @RequestParam("pageSize") Integer pageSize) {
+    public CommonResult<List<UmsAdmin>> list(@RequestParam(defaultValue = "1") Integer pageNum,
+                                             @RequestParam(defaultValue = "5") Integer pageSize) {
         List<UmsAdmin> list = adminService.list(pageNum, pageSize);
         return CommonResult.success(list);
     }
@@ -128,7 +130,7 @@ public class UmsAdminController {
     @ApiOperation("修改用户密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> updatePassword(@RequestBody UpdateAdminPasswordParam param) {
+    public CommonResult<Integer> updatePassword(@RequestBody UmsUpdateAdminPasswordParam param) {
         int result = adminService.updatePassword(param);
         return CommonResult.success(result);
     }
@@ -137,7 +139,7 @@ public class UmsAdminController {
     @ApiOperation("用户注册")
     @RequestMapping(value = "/registry", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<UmsAdmin> registry(@RequestBody UmsAdminParam adminParam) {
+    public CommonResult<UmsAdmin> registry(@Validated @RequestBody UmsAdminParam adminParam) {
         UmsAdmin registry = adminService.registry(adminParam);
         return CommonResult.success(registry);
     }
@@ -146,8 +148,8 @@ public class UmsAdminController {
     @ApiOperation("用户登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> login(String username, String password) {
-        String token = adminService.login(username, password);
+    public CommonResult<String> login(@Validated @RequestBody UmsAdminLoginParam loginParam) {
+        String token = adminService.login(loginParam.getUsername(), loginParam.getPassword());
         return CommonResult.success(token);
     }
 

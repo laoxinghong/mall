@@ -1,7 +1,7 @@
 package com.jitgur.mall.admin.service;
 
 import com.jitgur.mall.admin.dto.UmsAdminParam;
-import com.jitgur.mall.admin.dto.UpdateAdminPasswordParam;
+import com.jitgur.mall.admin.dto.UmsUpdateAdminPasswordParam;
 import com.jitgur.mall.mbg.model.UmsAdmin;
 import com.jitgur.mall.mbg.model.UmsResource;
 import com.jitgur.mall.mbg.model.UmsRole;
@@ -75,7 +75,7 @@ public interface UmsAdminService {
     /**
      * 修改用户密码
      */
-    int updatePassword(UpdateAdminPasswordParam updateAdminPasswordParam);
+    int updatePassword(UmsUpdateAdminPasswordParam umsUpdateAdminPasswordParam);
 
 
     /**
