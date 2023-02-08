@@ -25,4 +25,5 @@ public class UmsUpdateAdminPasswordParam {
     @ApiModelProperty(value = "新密码", required = true)
     private String newPassword;
 
+
 }
