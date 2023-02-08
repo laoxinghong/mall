@@ -51,7 +51,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 
 
     @Override
-    public UmsResource get(Long resourceId) {
+    public UmsResource getItem(Long resourceId) {
         return resourceMapper.selectByPrimaryKey(resourceId);
     }
 

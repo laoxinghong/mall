@@ -31,7 +31,7 @@ public interface UmsResourceService {
     /**
      * 获取指定资源
      */
-    UmsResource get(Long resourceId);
+    UmsResource getItem(Long resourceId);
 
 
     /**
