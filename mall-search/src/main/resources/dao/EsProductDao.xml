@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitgur.mall.search.dao.EsProductDao">
+    <resultMap id="esProductListMap" type="com.jitgur.mall.search.domain.EsProduct" autoMapping="true">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <collection property="attrValueList" columnPrefix="attr_"
+                    ofType="com.jitgur.mall.search.domain.EsProductAttributeValue">
+            <id column="id" property="id" jdbcType="BIGINT"/>
+            <result column="product_attribute_id" property="productAttributeId" jdbcType="BIGINT"/>
+            <result column="value" property="value" jdbcType="VARCHAR"/>
+            <result column="type" property="type"/>
+            <result column="name" property="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="getEsProductListById" resultMap="esProductListMap">
+        SELECT
+        pp.id id,
+        pp.product_sn productSn,
+        pp.brand_id brandId,
+        pp.brand_name brandName,
+        pp.product_category_id productCategoryId,
+        pp.product_category_name productCategoryName,
+        pp.pic pic,
+        pp.name name,
+        pp.sub_title subTile,
+        pp.keywords keywords,
+        pp.price price,
+        pp.sale sale,
+        pp.new_status newStatus,
+        pp.recommend_status recommendStatus,
+        pp.stock stock,
+        pp.promotion_type promotionType,
+        pp.sort sort,
+        ppav.id attr_id,
+        ppav.product_attribute_id attr_product_attribute_id,
+        ppav.value attr_value,
+        ppa.type attr_type,
+        ppa.name attr_name
+        FROM pms_product pp
+        LEFT JOIN pms_product_attribute_value ppav on pp.id = ppav.product_id
+        LEFT JOIN pms_product_attribute ppa on ppa.id=ppav.product_attribute_id
+        WHERE pp.delete_status=0 AND pp.publish_status=1
+        <if test="id!=null">
+            AND pp.id=#{id}
+        </if>
+    </select>
+</mapper>
