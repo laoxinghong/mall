@@ -20,7 +20,7 @@ import java.util.Map;
  * Created by jitgur on 20230208
  */
 @Configuration
-public class MallSecurityConfig {
+public class AdminSecurityConfig {
 
     @Autowired
     private UmsAdminService adminService;
