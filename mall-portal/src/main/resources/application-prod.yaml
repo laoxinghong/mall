@@ -1,6 +1,9 @@
+server:
+  port: 8085
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mymall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://db:3306/mymall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: QQ29190281951336
     druid:
@@ -8,30 +11,36 @@ spring:
       min-idle: 10 #最小空闲连接数
       max-active: 20 #最大连接数
       web-stat-filter:
-        exclusions: "*.js, *.gif, *.jpg, *.pgn, *.css, *.ico, /druid/*" #不统计这些数据
+        exclusions: "*.js, *.gif, *.png, *.css, *.jpg, *.ico, /druid/*"  #不统计这些数据
       stat-view-servlet:
         login-username: druid #访问监控网页的登录用户名
         login-password: druid #访问监控网页的登录密码
-
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
+      database: mall-port
 
   redis:
-    host: localhost
+    host: redis
     database: 0
     port: 6379
     password: QQ29190281951336
     timeout: 300ms
 
-minio:
-  endpoint: http://localhost:9000 #MINIO服务所在地址
-  bucketName: mall #存储桶名称
-  accessKey: minioadmin #访问的key
-  secretKey: minioadmin #密钥
+  rabbitmq:
+    host: rabbit
+    port: 5672
+    virtual-host: /mall
+    username: mall
+    password: mall
 
 logging:
+  file:
+    path: /var/logs
   level:
     root: info
-    com.jitgur.mall: debug
+    com.jitgur.mall: info
 
 logstash:
-  host: localhost
-  enableInnerLog: false
+  host: logstash

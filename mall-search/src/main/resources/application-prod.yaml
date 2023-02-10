@@ -26,7 +26,7 @@ logging:
     path: /var/logs
   level:
     root: info
-    com.jitgur.mall.search: info
+    com.jitgur.mall: info
 
 logstash:
   host: logstash
