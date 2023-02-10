@@ -12,6 +12,7 @@
         <module name="mall-admin" />
         <module name="mall-search" />
         <module name="mall-mbg" />
+        <module name="mall-portal" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
       <module name="mall-commom" target="17" />
       <module name="mall-common" target="1.8" />
       <module name="mall-mbg" target="1.8" />
+      <module name="mall-portal" target="1.8" />
       <module name="mall-search" target="1.8" />
       <module name="mall-security" target="1.8" />
     </bytecodeTargetLevel>
@@ -30,6 +32,7 @@
       <module name="mall-commom" options="-parameters" />
       <module name="mall-common" options="-parameters" />
       <module name="mall-mbg" options="-parameters" />
+      <module name="mall-portal" options="-parameters" />
       <module name="mall-search" options="-parameters" />
       <module name="mall-security" options="-parameters" />
     </option>
