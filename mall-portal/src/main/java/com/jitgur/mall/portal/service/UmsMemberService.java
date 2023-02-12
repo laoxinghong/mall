@@ -14,7 +14,7 @@ public interface UmsMemberService {
      * 用户注册
      */
     @Transactional
-    UmsMember registry(String username, String password, String telephone, String authCode);
+    void registry(String username, String password, String telephone, String authCode);
 
 
     /**
