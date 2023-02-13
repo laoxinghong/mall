@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitgur.mall.portal.dao.SmsCouponHistoryDao">
+
+    <select id="getCouponList" resultMap="com.jitgur.mall.mbg.mapper.SmsCouponMapper.BaseResultMap">
+        SELECT sc.*
+        FROM sms_coupon_history sch
+        LEFT JOIN sms_coupon sc ON sc.id=sch.coupon_id
+        WHERE sch.member_id=#{memberId}
+        <if test="useStatus!=null and useStatus==2">
+            AND NOW()>sc.end_time
+        </if>
+        <if test="useStatus!=null and useStatus!=2">
+            AND use_status=#{useStatus}
+            AND NOW()>sc.start_time
+            AND sc.end_time>NOW()
+        </if>
+    </select>
+</mapper>
