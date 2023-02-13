@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitgur.mall.portal.dao.SmsHomeDao">
+    <select id="recommendBrandList" resultMap="com.jitgur.mall.mbg.mapper.PmsBrandMapper.BaseResultMap">
+        SELECT pb.*
+        FROM sms_home_brand shb
+                 LEFT JOIN pms_brand pb ON pb.id = shb.brand_id
+        WHERE shb.recommend_status = 1
+          AND pb.show_status = 1
+        ORDER BY shb.sort DESC
+        LIMIT #{offset},#{limit}
+    </select>
+</mapper>
