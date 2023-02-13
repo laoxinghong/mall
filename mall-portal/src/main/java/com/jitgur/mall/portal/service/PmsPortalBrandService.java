@@ -9,7 +9,7 @@ import java.util.List;
  * 门户品牌管理service
  * Created by jitgur on 20230212
  */
-public interface PortalBrandService {
+public interface PmsPortalBrandService {
 
     /**
      * 分页获取推荐品牌

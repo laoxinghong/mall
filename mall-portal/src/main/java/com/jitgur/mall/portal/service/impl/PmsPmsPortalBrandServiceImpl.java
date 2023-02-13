@@ -7,7 +7,7 @@ import com.jitgur.mall.mbg.model.PmsBrand;
 import com.jitgur.mall.mbg.model.PmsProduct;
 import com.jitgur.mall.mbg.model.PmsProductExample;
 import com.jitgur.mall.portal.dao.SmsHomeDao;
-import com.jitgur.mall.portal.service.PortalBrandService;
+import com.jitgur.mall.portal.service.PmsPortalBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by jitgur on 20230212
  */
 @Service
-public class PortalBrandServiceImpl implements PortalBrandService {
+public class PmsPmsPortalBrandServiceImpl implements PmsPortalBrandService {
 
     @Autowired
     private SmsHomeDao homeDao;
