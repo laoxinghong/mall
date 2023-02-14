@@ -18,7 +18,7 @@ import java.util.Date;
 public class UmsMemberBrandAttention {
 
     @Id
-    private Long id;
+    private String id;
     @Indexed
     private Long memberId;
     private String memberNickname;
