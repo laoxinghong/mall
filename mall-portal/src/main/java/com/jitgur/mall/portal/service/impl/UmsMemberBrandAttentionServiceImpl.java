@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 会员品牌关注管理service
@@ -55,9 +56,10 @@ public class UmsMemberBrandAttentionServiceImpl implements UmsMemberBrandAttenti
 
 
     @Override
-    public List<UmsMemberBrandAttention> detail(String brandName) {
+    public List<UmsMemberBrandAttention> list(String brandName) {
         UmsMember currentMember = memberService.getCurrentMember();
-        return memberBrandAttentionRepository.findByMemberIdAndBrandName(currentMember.getId(), brandName);
+        List<UmsMemberBrandAttention> allAttention = memberBrandAttentionRepository.findAllByMemberId(currentMember.getId());
+        return allAttention.stream().filter(item -> item.getBrandName().contains(brandName)).collect(Collectors.toList());
     }
 
 

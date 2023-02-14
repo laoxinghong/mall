@@ -26,7 +26,7 @@ public interface UmsMemberBrandAttentionService {
     /**
      * 根据品牌名称查找品牌关注详情
      */
-    List<UmsMemberBrandAttention> detail(String brandName);
+    List<UmsMemberBrandAttention> list(String brandName);
 
 
     /**

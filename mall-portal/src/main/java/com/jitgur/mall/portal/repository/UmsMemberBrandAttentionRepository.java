@@ -38,8 +38,8 @@ public interface UmsMemberBrandAttentionRepository extends MongoRepository<UmsMe
 
 
     /**
-     * 根据品牌名称获取关注详情
+     * 获取当前用户所有品牌关注详情
      */
-    List<UmsMemberBrandAttention> findByMemberIdAndBrandName(Long memberId, String brandName);
+    List<UmsMemberBrandAttention> findAllByMemberId(Long memberId);
 
 }
