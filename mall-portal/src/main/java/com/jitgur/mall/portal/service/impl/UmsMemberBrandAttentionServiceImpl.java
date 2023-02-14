@@ -33,7 +33,7 @@ public class UmsMemberBrandAttentionServiceImpl implements UmsMemberBrandAttenti
         UmsMember currentMember = memberService.getCurrentMember();
         // 是否已关注该品牌
         UmsMemberBrandAttention attention = memberBrandAttentionRepository.findByMemberIdAndBrandId(currentMember.getId(), memberBrandAttention.getBrandId());
-        if (attention == null) {
+        if (attention != null) {
             return 0;
         }
         // 填充用户信息
