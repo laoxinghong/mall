@@ -3,6 +3,8 @@ package com.jitgur.mall.portal.service;
 import com.jitgur.mall.portal.domain.UmsMemberBrandAttention;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 /**
  * 会员品牌关注管理service
  * Created by jitgur on 20230214
@@ -22,9 +24,9 @@ public interface UmsMemberBrandAttentionService {
 
 
     /**
-     * 获取品牌关注详情
+     * 根据品牌名称查找品牌关注详情
      */
-    UmsMemberBrandAttention detail(Long brandId);
+    List<UmsMemberBrandAttention> detail(String brandName);
 
 
     /**

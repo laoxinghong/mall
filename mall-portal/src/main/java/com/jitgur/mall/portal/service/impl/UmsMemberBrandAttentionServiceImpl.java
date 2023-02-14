@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 会员品牌关注管理service
@@ -54,9 +55,9 @@ public class UmsMemberBrandAttentionServiceImpl implements UmsMemberBrandAttenti
 
 
     @Override
-    public UmsMemberBrandAttention detail(Long brandId) {
+    public List<UmsMemberBrandAttention> detail(String brandName) {
         UmsMember currentMember = memberService.getCurrentMember();
-        return memberBrandAttentionRepository.findByMemberIdAndBrandId(currentMember.getId(), brandId);
+        return memberBrandAttentionRepository.findByMemberIdAndBrandName(currentMember.getId(), brandName);
     }
 
 

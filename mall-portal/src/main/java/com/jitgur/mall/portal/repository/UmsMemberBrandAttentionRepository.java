@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.List;
+
 /**
  * 会员品牌关注管理Repository
  * Created by jitgur on 20230214
@@ -33,5 +35,11 @@ public interface UmsMemberBrandAttentionRepository extends MongoRepository<UmsMe
      * 清空当前用户关注列表
      */
     void deleteAllByMemberId(Long memberId);
+
+
+    /**
+     * 根据品牌名称获取关注详情
+     */
+    List<UmsMemberBrandAttention> findByMemberIdAndBrandName(Long memberId, String brandName);
 
 }
