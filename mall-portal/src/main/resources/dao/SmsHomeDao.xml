@@ -2,6 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.jitgur.mall.portal.dao.SmsHomeDao">
+
+    <resultMap id="flashPromotionProduct" type="com.jitgur.mall.portal.domain.SmsFlashPromotionProduct"
+               extends="com.jitgur.mall.mbg.mapper.PmsProductMapper.BaseResultMap">
+        <result column="flash_promotion_price" property="flashPrice"/>
+        <result column="flash_promotion_count" property="flashCount"/>
+        <result column="flash_promotion_limit" property="perCount"/>
+    </resultMap>
+
+    <select id="getFlashPromotionProductList" resultMap="flashPromotionProduct">
+        SELECT pp.*,
+               sfppr.flash_promotion_price,
+               sfppr.flash_promotion_count,
+               sfppr.flash_promotion_limit
+        FROM sms_flash_promotion_product_relation sfppr
+                 LEFT JOIN pms_product pp ON pp.id = sfppr.product_id
+        WHERE sfppr.flash_promotion_id = #{flashPromotionId}
+          AND sfppr.flash_promotion_session_id = #{sessionId}
+    </select>
+
     <select id="recommendBrandList" resultMap="com.jitgur.mall.mbg.mapper.PmsBrandMapper.BaseResultMap">
         SELECT pb.*
         FROM sms_home_brand shb
@@ -11,4 +30,35 @@
         ORDER BY shb.sort DESC
         LIMIT #{offset},#{limit}
     </select>
+
+    <select id="hotProductList" resultMap="com.jitgur.mall.mbg.mapper.PmsProductMapper.BaseResultMap">
+        SELECT pp.*
+        FROM sms_home_recommend_product shrp
+                 LEFT JOIN pms_product pp ON pp.id = shrp.product_id
+        WHERE shrp.recommend_status = 1
+          AND pp.publish_status = 1
+        ORDER BY shrp.sort DESC
+        LIMIT #{offset},#{limit}
+    </select>
+
+    <select id="newProductList" resultMap="com.jitgur.mall.mbg.mapper.PmsProductMapper.BaseResultMap">
+        SELECT pp.*
+        FROM sms_home_new_product shnp
+                 LEFT JOIN pms_product pp ON pp.id = shnp.product_id
+        WHERE pp.publish_status = 1
+          AND shnp.recommend_status = 1
+        ORDER BY shnp.sort DESC
+        LIMIT #{offset},#{limit}
+    </select>
+
+    <select id="homeSubjectList" resultMap="com.jitgur.mall.mbg.mapper.CmsSubjectMapper.BaseResultMap">
+        SELECT cs.*
+        FROM sms_home_recommend_subject shrs
+                 LEFT JOIN cms_subject cs ON shrs.subject_id = cs.id
+        WHERE shrs.recommend_status = 1
+          AND cs.show_status = 1
+        ORDER BY shrs.sort DESC
+        LIMIT #{offset},#{limit}
+    </select>
+
 </mapper>
