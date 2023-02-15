@@ -193,6 +193,66 @@ public class SmsFlashPromotionSessionExample {
             return (Criteria) this;
         }
 
+        public Criteria andFlashPromotionIdIsNull() {
+            addCriterion("flash_promotion_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdIsNotNull() {
+            addCriterion("flash_promotion_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdEqualTo(Long value) {
+            addCriterion("flash_promotion_id =", value, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdNotEqualTo(Long value) {
+            addCriterion("flash_promotion_id <>", value, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdGreaterThan(Long value) {
+            addCriterion("flash_promotion_id >", value, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("flash_promotion_id >=", value, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdLessThan(Long value) {
+            addCriterion("flash_promotion_id <", value, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdLessThanOrEqualTo(Long value) {
+            addCriterion("flash_promotion_id <=", value, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdIn(List<Long> values) {
+            addCriterion("flash_promotion_id in", values, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdNotIn(List<Long> values) {
+            addCriterion("flash_promotion_id not in", values, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdBetween(Long value1, Long value2) {
+            addCriterion("flash_promotion_id between", value1, value2, "flashPromotionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlashPromotionIdNotBetween(Long value1, Long value2) {
+            addCriterion("flash_promotion_id not between", value1, value2, "flashPromotionId");
+            return (Criteria) this;
+        }
+
         public Criteria andNameIsNull() {
             addCriterion("name is null");
             return (Criteria) this;

@@ -7,6 +7,9 @@ import java.util.Date;
 public class SmsFlashPromotionSession implements Serializable {
     private Long id;
 
+    @ApiModelProperty(value = "限时购活动id")
+    private Long flashPromotionId;
+
     private String name;
 
     private Date startTime;
@@ -26,6 +29,14 @@ public class SmsFlashPromotionSession implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getFlashPromotionId() {
+        return flashPromotionId;
+    }
+
+    public void setFlashPromotionId(Long flashPromotionId) {
+        this.flashPromotionId = flashPromotionId;
     }
 
     public String getName() {
@@ -75,6 +86,7 @@ public class SmsFlashPromotionSession implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", flashPromotionId=").append(flashPromotionId);
         sb.append(", name=").append(name);
         sb.append(", startTime=").append(startTime);
         sb.append(", endTime=").append(endTime);
