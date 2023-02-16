@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+    <resultMap id="promotionProductMap" type="com.jitgur.mall.portal.domain.OmsPromotionProduct"
+               extends="com.jitgur.mall.mbg.mapper.PmsProductMapper.BaseResultMap">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <collection property="skuStockList" columnPrefix="sku_"
+                    resultMap="com.jitgur.mall.mbg.mapper.PmsSkuStockMapper.BaseResultMap"/>
+        <collection property="ladderList" columnPrefix="ladder_"
+                    resultMap="com.jitgur.mall.mbg.mapper.PmsProductDiscountLadderMapper.BaseResultMap"/>
+        <collection property="fullReductionList" columnPrefix="full"
+                    resultMap="com.jitgur.mall.mbg.mapper.PmsProductFullReductionMapper.BaseResultMap"/>
+    </resultMap>
+
+    <select id="calcProductPromotion" resultMap="promotionProductMap">
+        SELECT
+        pp.id,
+        pp.name,
+        pp.promotion_type,
+        pp.gift_growth,
+        pp.gift_point,
+        sku.id sku_id,
+        sku.price sku_price,
+        sku.sku_code sku_sku_code,
+        sku.promotion_price sku_promotion_price,
+        sku.stock sku_stock,
+        sku.lock_stock sku_lock_stock,
+        ladder.id ladder_id,
+        ladder.count ladder_count,
+        ladder.discount ladder_discount,
+        ladder.price ladder_price,
+        full.id full_id,
+        full.full_price full_full_price,
+        full.reduce_price full_reduce_price
+        FROM pms_product pp
+        LEFT JOIN pms_sku_stock sku ON pp.id=sku.product_id
+        LEFT JOIN pms_product_discount_ladder ladder ON pp.id=ladder.product_id
+        LEFT JOIN pms_product_full_reduction full ON pp.id=full.product_id
+        WHERE pp.id IN
+        <foreach collection="productIdList" open="(" close=")" item="productId" separator=",">
+            #{productId}
+        </foreach>
+    </select>
+
+</mapper>
