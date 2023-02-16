@@ -23,6 +23,9 @@ public class OmsCartItem implements Serializable {
     @ApiModelProperty(value = "价格")
     private BigDecimal price;
 
+    @ApiModelProperty(value = "上架状态 0>下架 1>上架")
+    private Integer productPublishStatus;
+
     private String productPic;
 
     private String productName;
@@ -102,6 +105,14 @@ public class OmsCartItem implements Serializable {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Integer getProductPublishStatus() {
+        return productPublishStatus;
+    }
+
+    public void setProductPublishStatus(Integer productPublishStatus) {
+        this.productPublishStatus = productPublishStatus;
     }
 
     public String getProductPic() {
@@ -212,6 +223,7 @@ public class OmsCartItem implements Serializable {
         sb.append(", memberId=").append(memberId);
         sb.append(", quantity=").append(quantity);
         sb.append(", price=").append(price);
+        sb.append(", productPublishStatus=").append(productPublishStatus);
         sb.append(", productPic=").append(productPic);
         sb.append(", productName=").append(productName);
         sb.append(", productBrand=").append(productBrand);

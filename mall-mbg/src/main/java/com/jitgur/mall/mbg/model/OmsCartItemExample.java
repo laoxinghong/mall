@@ -467,6 +467,66 @@ public class OmsCartItemExample {
             return (Criteria) this;
         }
 
+        public Criteria andProductPublishStatusIsNull() {
+            addCriterion("product_publish_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusIsNotNull() {
+            addCriterion("product_publish_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusEqualTo(Integer value) {
+            addCriterion("product_publish_status =", value, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusNotEqualTo(Integer value) {
+            addCriterion("product_publish_status <>", value, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusGreaterThan(Integer value) {
+            addCriterion("product_publish_status >", value, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("product_publish_status >=", value, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusLessThan(Integer value) {
+            addCriterion("product_publish_status <", value, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("product_publish_status <=", value, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusIn(List<Integer> values) {
+            addCriterion("product_publish_status in", values, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusNotIn(List<Integer> values) {
+            addCriterion("product_publish_status not in", values, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusBetween(Integer value1, Integer value2) {
+            addCriterion("product_publish_status between", value1, value2, "productPublishStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPublishStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("product_publish_status not between", value1, value2, "productPublishStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andProductPicIsNull() {
             addCriterion("product_pic is null");
             return (Criteria) this;

@@ -8,6 +8,7 @@
     <result column="member_id" jdbcType="BIGINT" property="memberId" />
     <result column="quantity" jdbcType="INTEGER" property="quantity" />
     <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="product_publish_status" jdbcType="INTEGER" property="productPublishStatus" />
     <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="product_brand" jdbcType="VARCHAR" property="productBrand" />
@@ -80,9 +81,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, product_sku_id, member_id, quantity, price, product_pic, product_name, 
-    product_brand, product_sn, product_sub_title, product_sku_code, member_nickname, 
-    create_time, modify_time, delete_status, product_category_id, product_attr
+    id, product_id, product_sku_id, member_id, quantity, price, product_publish_status, 
+    product_pic, product_name, product_brand, product_sn, product_sub_title, product_sku_code, 
+    member_nickname, create_time, modify_time, delete_status, product_category_id, product_attr
   </sql>
   <select id="selectByExample" parameterType="com.jitgur.mall.mbg.model.OmsCartItemExample" resultMap="BaseResultMap">
     select
@@ -119,17 +120,19 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oms_cart_item (product_id, product_sku_id, member_id, 
-      quantity, price, product_pic, 
-      product_name, product_brand, product_sn, 
-      product_sub_title, product_sku_code, member_nickname, 
-      create_time, modify_time, delete_status, 
-      product_category_id, product_attr)
+      quantity, price, product_publish_status, 
+      product_pic, product_name, product_brand, 
+      product_sn, product_sub_title, product_sku_code, 
+      member_nickname, create_time, modify_time, 
+      delete_status, product_category_id, product_attr
+      )
     values (#{productId,jdbcType=BIGINT}, #{productSkuId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, 
-      #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{productPic,jdbcType=VARCHAR}, 
-      #{productName,jdbcType=VARCHAR}, #{productBrand,jdbcType=VARCHAR}, #{productSn,jdbcType=VARCHAR}, 
-      #{productSubTitle,jdbcType=VARCHAR}, #{productSkuCode,jdbcType=VARCHAR}, #{memberNickname,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, 
-      #{productCategoryId,jdbcType=BIGINT}, #{productAttr,jdbcType=VARCHAR})
+      #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{productPublishStatus,jdbcType=INTEGER}, 
+      #{productPic,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productBrand,jdbcType=VARCHAR}, 
+      #{productSn,jdbcType=VARCHAR}, #{productSubTitle,jdbcType=VARCHAR}, #{productSkuCode,jdbcType=VARCHAR}, 
+      #{memberNickname,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{deleteStatus,jdbcType=INTEGER}, #{productCategoryId,jdbcType=BIGINT}, #{productAttr,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jitgur.mall.mbg.model.OmsCartItem">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -151,6 +154,9 @@
       </if>
       <if test="price != null">
         price,
+      </if>
+      <if test="productPublishStatus != null">
+        product_publish_status,
       </if>
       <if test="productPic != null">
         product_pic,
@@ -204,6 +210,9 @@
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="productPublishStatus != null">
+        #{productPublishStatus,jdbcType=INTEGER},
       </if>
       <if test="productPic != null">
         #{productPic,jdbcType=VARCHAR},
@@ -270,6 +279,9 @@
       <if test="row.price != null">
         price = #{row.price,jdbcType=DECIMAL},
       </if>
+      <if test="row.productPublishStatus != null">
+        product_publish_status = #{row.productPublishStatus,jdbcType=INTEGER},
+      </if>
       <if test="row.productPic != null">
         product_pic = #{row.productPic,jdbcType=VARCHAR},
       </if>
@@ -319,6 +331,7 @@
       member_id = #{row.memberId,jdbcType=BIGINT},
       quantity = #{row.quantity,jdbcType=INTEGER},
       price = #{row.price,jdbcType=DECIMAL},
+      product_publish_status = #{row.productPublishStatus,jdbcType=INTEGER},
       product_pic = #{row.productPic,jdbcType=VARCHAR},
       product_name = #{row.productName,jdbcType=VARCHAR},
       product_brand = #{row.productBrand,jdbcType=VARCHAR},
@@ -352,6 +365,9 @@
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="productPublishStatus != null">
+        product_publish_status = #{productPublishStatus,jdbcType=INTEGER},
       </if>
       <if test="productPic != null">
         product_pic = #{productPic,jdbcType=VARCHAR},
@@ -399,6 +415,7 @@
       member_id = #{memberId,jdbcType=BIGINT},
       quantity = #{quantity,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
+      product_publish_status = #{productPublishStatus,jdbcType=INTEGER},
       product_pic = #{productPic,jdbcType=VARCHAR},
       product_name = #{productName,jdbcType=VARCHAR},
       product_brand = #{productBrand,jdbcType=VARCHAR},
