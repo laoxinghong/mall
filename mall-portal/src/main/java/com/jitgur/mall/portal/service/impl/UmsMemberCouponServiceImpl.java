@@ -5,11 +5,14 @@ import com.jitgur.mall.common.exception.Asserts;
 import com.jitgur.mall.mbg.mapper.*;
 import com.jitgur.mall.mbg.model.*;
 import com.jitgur.mall.portal.dao.SmsCouponHistoryDao;
+import com.jitgur.mall.portal.domain.OmsCartPromotionItem;
+import com.jitgur.mall.portal.domain.SmsCouponHistoryDetail;
 import com.jitgur.mall.portal.service.UmsMemberCouponService;
 import com.jitgur.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -167,7 +170,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
             // 返回用户拥有的优惠券
             List<SmsCouponHistory> couponHistoryList = listHistory(0);
             List<Long> ownCouponIdList = couponHistoryList.stream().map(SmsCouponHistory::getCouponId).collect(Collectors.toList());
-            return couponList.stream().filter(coupon -> !ownCouponIdList.contains(coupon.getId())).collect(Collectors.toList());
+            return couponList.stream().filter(coupon -> ownCouponIdList.contains(coupon.getId())).collect(Collectors.toList());
         }
 
         return null;
@@ -180,5 +183,81 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         return couponHistoryDao.getCouponList(currentMember.getId(), useStatus);
     }
 
+
+    /**
+     * 获取购物车商品可用优惠券
+     *
+     * @param cartPromotionItemList 购物车商品列表
+     * @param type                  0>不可用优惠券 1>可用优惠券
+     */
+    @Override
+    public List<SmsCouponHistoryDetail> listCartCoupon(List<OmsCartPromotionItem> cartPromotionItemList, Integer type) {
+        UmsMember currentMember = memberService.getCurrentMember();
+        List<SmsCouponHistoryDetail> allList = couponHistoryDao.getCouponHistoryDetailList(currentMember.getId());
+        List<SmsCouponHistoryDetail> usableList = new ArrayList<>();
+        List<SmsCouponHistoryDetail> unusableList = new ArrayList<>();
+
+        for (SmsCouponHistoryDetail detail : allList) {
+            Integer useType = detail.getCoupon().getUseType();
+            BigDecimal minPoint = detail.getCoupon().getMinPoint();
+            Date startTime = detail.getCoupon().getStartTime();
+            Date endTime = detail.getCoupon().getEndTime();
+            Date now = new Date();
+            if (useType == 0) {
+                BigDecimal amount = calcAmount(cartPromotionItemList);
+                if (amount.subtract(minPoint).intValue() >= 0 && now.after(startTime) && now.before(endTime)) {
+                    usableList.add(detail);
+                } else {
+                    unusableList.add(detail);
+                }
+            } else if (useType == 1) {
+                List<SmsCouponProductCategoryRelation> categoryRelationList = detail.getCategoryRelationList();
+                List<Long> categoryIdList = categoryRelationList.stream()
+                        .map(SmsCouponProductCategoryRelation::getProductCategoryId)
+                        .collect(Collectors.toList());
+                // 过滤指定分类的购物车商品
+                List<OmsCartPromotionItem> cartList = cartPromotionItemList.stream()
+                        .filter(cartPromotionItem -> categoryIdList.contains(cartPromotionItem.getProductCategoryId()))
+                        .collect(Collectors.toList());
+                BigDecimal amount = calcAmount(cartList);
+                if (amount.subtract(minPoint).intValue() >= 0 && now.after(startTime) && now.before(endTime)) {
+                    usableList.add(detail);
+                } else {
+                    unusableList.add(detail);
+                }
+            } else if (useType == 2) {
+                List<SmsCouponProductRelation> productRelationList = detail.getProductRelationList();
+                List<Long> productIdList = productRelationList.stream()
+                        .map(SmsCouponProductRelation::getProductId)
+                        .collect(Collectors.toList());
+                // 过滤指定购物车商品
+                List<OmsCartPromotionItem> cartList = cartPromotionItemList.stream()
+                        .filter(item -> productIdList.contains(item.getProductId()))
+                        .collect(Collectors.toList());
+                BigDecimal amount = calcAmount(cartList);
+                if (amount.subtract(minPoint).intValue() >= 0 && now.after(startTime) && now.before(endTime)) {
+                    usableList.add(detail);
+                } else {
+                    unusableList.add(detail);
+                }
+            }
+        }
+
+        return type == 0 ? unusableList : usableList;
+    }
+
+
+    /**
+     * 计算商品总金额
+     */
+    public BigDecimal calcAmount(List<OmsCartPromotionItem> cartPromotionItemList) {
+        BigDecimal count = new BigDecimal(0);
+        for (OmsCartPromotionItem cartPromotionItem : cartPromotionItemList) {
+            BigDecimal realPrice = cartPromotionItem.getPrice().subtract(cartPromotionItem.getReducePrice());
+            BigDecimal amount = realPrice.multiply(new BigDecimal(cartPromotionItem.getQuantity()));
+            count = count.add(amount);
+        }
+        return count;
+    }
 
 }

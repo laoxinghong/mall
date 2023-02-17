@@ -2,6 +2,8 @@ package com.jitgur.mall.portal.service;
 
 import com.jitgur.mall.mbg.model.SmsCoupon;
 import com.jitgur.mall.mbg.model.SmsCouponHistory;
+import com.jitgur.mall.portal.domain.OmsCartPromotionItem;
+import com.jitgur.mall.portal.domain.SmsCouponHistoryDetail;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -26,9 +28,12 @@ public interface UmsMemberCouponService {
 
 
     /**
-     * 根据购物车促销项目获取可用优惠券
+     * 获取购物车商品可用优惠券
+     *
+     * @param cartPromotionItemList 购物车商品列表
+     * @param type                  0>不可用优惠券 1>可用优惠券
      */
-//    List<SmsCouponHistoryDetail> listCart(List<CartPromotionItem>  cartItemList,Integer type);
+    List<SmsCouponHistoryDetail> listCartCoupon(List<OmsCartPromotionItem> cartPromotionItemList, Integer type);
 
 
     /**
