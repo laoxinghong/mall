@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+    <resultMap id="cartProductMap" type="com.jitgur.mall.portal.domain.OmsCartProduct"
+               extends="com.jitgur.mall.mbg.mapper.PmsProductMapper.BaseResultMap" autoMapping="true">
+        <id property="id" jdbcType="BIGINT" column="id"/>
+        <collection property="productAttributeList" columnPrefix="attribute_"
+                    resultMap="com.jitgur.mall.mbg.mapper.PmsProductAttributeMapper.BaseResultMap"/>
+        <collection property="skuStockList" columnPrefix="sku_"
+                    resultMap="com.jitgur.mall.mbg.mapper.PmsSkuStockMapper.BaseResultMap"/>
+    </resultMap>
+
+    <select id="cartProduct" resultMap="cartProductMap">
+        SELECT pp.id,
+               pp.name,
+               pp.sub_title,
+               pp.price,
+               pp.pic,
+               pp.product_attribute_category_id,
+               pp.stock,
+               ppa.id       attribute_id,
+               ppa.name     attribute_name,
+               pss.id       sku_id,
+               pss.sku_code sku_sku_code,
+               pss.price    sku_price,
+               pss.stock    sku_stock,
+               pss.pic      sku_pic
+        FROM pms_product pp
+                 LEFT JOIN pms_product_attribute ppa
+                           ON pp.product_attribute_category_id = ppa.product_attribute_category_id
+                 LEFT JOIN pms_sku_stock pss ON pss.product_id = pp.id
+        WHERE pp.id = #{productId}
+    </select>
+
+</mapper>
