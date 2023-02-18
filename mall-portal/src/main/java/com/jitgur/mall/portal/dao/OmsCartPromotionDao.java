@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 购物车促销信息管理dao
- * Created by jitgur on 20230216
+ * 购物车促销管理dao
+ * Created by jitgur on 20230218
  */
 public interface OmsCartPromotionDao {
 
