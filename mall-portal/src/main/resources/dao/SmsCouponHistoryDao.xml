@@ -28,13 +28,36 @@
                cpr.id                   pro_id,
                cpr.product_id           pro_product_id,
                cpcr.id                  cate_id,
-               cpcr.product_category_id cate_product_category_id,
+               cpcr.product_category_id cate_product_category_id
         FROM sms_coupon_history ch
                  LEFT JOIN sms_coupon c ON c.id = ch.coupon_id
                  LEFT JOIN sms_coupon_product_category_relation cpcr ON cpcr.coupon_id = c.id
                  LEFT JOIN sms_coupon_product_relation cpr ON cpr.coupon_id = c.id
         WHERE ch.member_id = #{memberId}
           AND ch.use_status = 0
+    </select>
+
+    <select id="getCouponHistoryDetailById" resultMap="couponHistoryDetailListMap">
+        SELECT ch.*,
+               c.id                     c_id,
+               c.use_type               c_use_type,
+               c.name                   c_name,
+               c.amount                 c_amount,
+               c.platform               c_platform,
+               c.note                   c_note,
+               cpr.id                   pro_id,
+               cpr.product_id           pro_product_id,
+               cpcr.id                  cate_id,
+               cpcr.product_category_id cate_product_category_id
+        FROM sms_coupon_history ch
+                 LEFT JOIN sms_coupon c ON c.id = ch.coupon_id
+                 LEFT JOIN sms_coupon_product_category_relation cpcr ON cpcr.coupon_id = c.id
+                 LEFT JOIN sms_coupon_product_relation cpr ON cpr.coupon_id = c.id
+        WHERE c.id = #{couponId}
+          AND ch.member_id = #{memberId}
+          AND ch.use_status = 0
+          AND now() > c.start_time
+          AND c.end_time > now()
     </select>
 
     <select id="getCouponList" resultMap="com.jitgur.mall.mbg.mapper.SmsCouponMapper.BaseResultMap">
