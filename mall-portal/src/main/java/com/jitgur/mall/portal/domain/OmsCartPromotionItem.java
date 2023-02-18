@@ -8,8 +8,8 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 /**
- * 包含促销信息的购物车项目
- * Created by jitgur on 20230216
+ * 购物车商品信息封装
+ * Created by jitgur on 20230218
  */
 @Getter
 @Setter
