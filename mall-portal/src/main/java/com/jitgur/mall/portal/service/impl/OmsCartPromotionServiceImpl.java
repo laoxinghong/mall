@@ -19,8 +19,8 @@ import java.math.RoundingMode;
 import java.util.*;
 
 /**
- * 购物车促销信息管理service实现类
- * Created by jitgur on 20230216
+ * 购物车促销管理service实现类
+ * Created by jitgur on 20230218
  */
 @Service
 public class OmsCartPromotionServiceImpl implements OmsCartPromotionService {

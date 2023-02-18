@@ -6,8 +6,8 @@ import com.jitgur.mall.portal.domain.OmsCartPromotionItem;
 import java.util.List;
 
 /**
- * 购物车促销信息管理service
- * Created by jitgur on 20230216
+ * 购物车促销管理service
+ * Created by jitgur on 20230218
  */
 public interface OmsCartPromotionService {
 
