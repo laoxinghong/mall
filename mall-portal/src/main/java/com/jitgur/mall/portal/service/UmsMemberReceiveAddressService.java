@@ -33,7 +33,7 @@ public interface UmsMemberReceiveAddressService {
     /**
      * 返回当前会员收货地址列表
      */
-    List<UmsMemberReceiveAddress> list();
+    List<UmsMemberReceiveAddress> list(Long memberId);
 
 
     /**
