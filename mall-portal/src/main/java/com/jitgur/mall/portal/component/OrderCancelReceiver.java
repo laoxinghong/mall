@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * 订单取消消息接收者
+ * 订单取消消息执行者
  * Created by jitgur on 20230219
  */
 @Component
