@@ -38,4 +38,30 @@ public interface OmsPortalOrderService {
     BigDecimal calcIntegrationAmount(Integer ownIntegration, Integer useIntegration, boolean useCoupon, BigDecimal totalAmount);
 
 
+    /**
+     * 取消订单
+     */
+    @Transactional
+    void cancelOrder(Long orderId);
+
+
+    /**
+     * 定时任务取消超时订单
+     */
+    @Transactional
+    int cancelTimeOutOrder();
+
+
+    /**
+     * 支付成功后回调
+     */
+    @Transactional
+    Integer paySuccess(Long orderId,Integer payType);
+
+
+    /**
+     * 确认收货
+     */
+    void confirmOrderReceive(Long orderId);
+
 }

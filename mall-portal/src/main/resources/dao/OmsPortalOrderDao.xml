@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitgur.mall.portal.dao.OmsPortalOrderDao">
+    <resultMap id="orderDetailMap" type="com.jitgur.mall.portal.domain.OmsOrderDetail"
+               extends="com.jitgur.mall.mbg.mapper.OmsOrderMapper.BaseResultMap">
+        <collection property="orderItemList" columnPrefix="item_"
+                    resultMap="com.jitgur.mall.mbg.mapper.OmsOrderItemMapper.BaseResultMap"/>
+    </resultMap>
+
+    <select id="getTimeOutOrderDetailList" resultMap="orderDetailMap">
+        SELECT o.id,
+               o.member_id,
+               o.coupon_id,
+               o.use_integration,
+               oi.id               item_id,
+               oi.product_sku_id   item_product_sku_id,
+               oi.product_quantity item_product_quantity
+        FROM oms_order o
+                 LEFT JOIN oms_order_item oi ON oi.order_id = o.id
+        WHERE o.status = 0
+          AND o.delete_status = 0
+          AND o.create_time &lt; date_add(NOW(), INTERVAL -#{overtime} MINUTE);
+    </select>
+
+    <select id="getOrderDetail" resultMap="orderDetailMap">
+        SELECT o.id,
+               o.member_id,
+               o.coupon_id,
+               o.use_integration,
+               oi.id               item_id,
+               oi.product_sku_id   item_product_sku_id,
+               oi.product_quantity item_product_quantity
+        FROM oms_order o
+                 LEFT JOIN oms_order_item oi ON oi.order_id = o.id
+        WHERE o.id = #{orderId}
+    </select>
+
+    <update id="releaseProductLockStock">
+        UPDATE pms_sku_stock SET
+        lock_stock= CASE id
+        <foreach collection="list" item="item">
+            WHEN #{item.productSkuId} THEN lock_stock-#{item.productQuantity}
+        </foreach>
+        END
+        WHERE id IN
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.productSkuId}
+        </foreach>
+    </update>
+
+    <update id="updateOrderStatus">
+        UPDATE oms_order SET status=#{targetStatus}
+        WHERE id IN
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <update id="updateProductSkuStock">
+        UPDATE pms_sku_stock SET
+        stock=CASE id
+        <foreach collection="list" item="item">
+            WHEN #{item.productSkuId} THEN stock-#{item.productQuantity}
+        </foreach>
+        END,
+        lock_stock=CASE id
+        <foreach collection="list" item="item">
+            WHEN #{item.productSkuId} THEN lock_stock-#{item.productQuantity}
+        </foreach>
+        END
+        WHERE id IN
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.productSkuId}
+        </foreach>
+    </update>
+
+</mapper>
