@@ -3,6 +3,7 @@ package com.jitgur.mall.portal.service;
 import com.jitgur.mall.mbg.model.SmsCoupon;
 import com.jitgur.mall.mbg.model.SmsCouponHistory;
 import com.jitgur.mall.portal.domain.OmsCartPromotionItem;
+import com.jitgur.mall.portal.domain.SmsCouponUpdateParam;
 import com.jitgur.mall.portal.domain.SmsCouponHistoryDetail;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,4 +47,11 @@ public interface UmsMemberCouponService {
      * 获取当前用户优惠券列表
      */
     List<SmsCoupon> list(Integer useStatus);
+
+
+    /**
+     * 更新优惠券使用状态
+     */
+    void updateCoupon(SmsCouponUpdateParam updateParam);
+
 }

@@ -7,6 +7,7 @@ import com.jitgur.mall.mbg.model.*;
 import com.jitgur.mall.portal.dao.SmsCouponHistoryDao;
 import com.jitgur.mall.portal.domain.OmsCartPromotionItem;
 import com.jitgur.mall.portal.domain.SmsCouponHistoryDetail;
+import com.jitgur.mall.portal.domain.SmsCouponUpdateParam;
 import com.jitgur.mall.portal.service.UmsMemberCouponService;
 import com.jitgur.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -258,6 +259,25 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
             count = count.add(amount);
         }
         return count;
+    }
+
+
+    @Override
+    public void updateCoupon(SmsCouponUpdateParam updateParam) {
+        SmsCouponHistoryExample example = new SmsCouponHistoryExample();
+        example.createCriteria().andCouponIdEqualTo(updateParam.getCouponId())
+                .andMemberIdEqualTo(updateParam.getMemberId())
+                .andUseStatusEqualTo(updateParam.getUseStatus() == 1 ? 0 : 1);
+        List<SmsCouponHistory> couponHistoryList = couponHistoryMapper.selectByExample(example);
+
+        if (CollUtil.isNotEmpty(couponHistoryList)) {
+            SmsCouponHistory couponHistory = couponHistoryList.get(0);
+            couponHistory.setOrderId(updateParam.getOrderId());
+            couponHistory.setUseStatus(updateParam.getUseStatus());
+            couponHistory.setUseTime(updateParam.getUseTime());
+            couponHistory.setOrderSn(updateParam.getOrderSn());
+            couponHistoryMapper.updateByPrimaryKeySelective(couponHistory);
+        }
     }
 
 }
