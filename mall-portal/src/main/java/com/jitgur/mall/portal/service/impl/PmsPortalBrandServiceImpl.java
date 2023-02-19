@@ -18,7 +18,7 @@ import java.util.List;
  * Created by jitgur on 20230212
  */
 @Service
-public class PmsPmsPortalBrandServiceImpl implements PmsPortalBrandService {
+public class PmsPortalBrandServiceImpl implements PmsPortalBrandService {
 
     @Autowired
     private SmsHomeDao homeDao;
