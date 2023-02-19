@@ -26,7 +26,7 @@ public class OrderTimeOutCancelTask {
     @Scheduled(cron = "0 0/10 * ? * ?")
     public void cancelTimeOutOrder() {
         int count = orderService.cancelTimeOutOrder();
-        LOGGER.info("cancel time out order and the quantity :{}", count);
+        LOGGER.info("cancel time out order and the quantity :{}", count) ;
     }
 
 }
