@@ -32,7 +32,7 @@ public interface UmsMemberProductReadHistoryService {
     /**
      * 根据商品名称查找相关浏览记录
      */
-    List<UmsMemberProductReadHistory> list(String productName);
+    List<UmsMemberProductReadHistory> listName(String productName);
 
 
     /**

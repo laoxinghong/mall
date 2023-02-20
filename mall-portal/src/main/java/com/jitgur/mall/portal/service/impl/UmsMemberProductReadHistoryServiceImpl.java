@@ -53,7 +53,7 @@ public class UmsMemberProductReadHistoryServiceImpl implements UmsMemberProductR
 
 
     @Override
-    public List<UmsMemberProductReadHistory> list(String productName) {
+    public List<UmsMemberProductReadHistory> listName(String productName) {
         UmsMember currentMember = memberService.getCurrentMember();
         List<UmsMemberProductReadHistory> allReadHistory = memberProductReadHistoryRepository.findAllByMemberId(currentMember.getId());
         return allReadHistory.stream().filter(item -> item.getProductName().contains(productName)).collect(Collectors.toList());
