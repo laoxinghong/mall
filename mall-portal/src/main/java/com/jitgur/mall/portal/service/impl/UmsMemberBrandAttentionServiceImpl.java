@@ -56,7 +56,7 @@ public class UmsMemberBrandAttentionServiceImpl implements UmsMemberBrandAttenti
 
 
     @Override
-    public List<UmsMemberBrandAttention> list(String brandName) {
+    public List<UmsMemberBrandAttention> listName(String brandName) {
         UmsMember currentMember = memberService.getCurrentMember();
         List<UmsMemberBrandAttention> allAttention = memberBrandAttentionRepository.findAllByMemberId(currentMember.getId());
         return allAttention.stream().filter(item -> item.getBrandName().contains(brandName)).collect(Collectors.toList());
@@ -75,6 +75,13 @@ public class UmsMemberBrandAttentionServiceImpl implements UmsMemberBrandAttenti
     public void clear() {
         UmsMember currentMember = memberService.getCurrentMember();
         memberBrandAttentionRepository.deleteAllByMemberId(currentMember.getId());
+    }
+
+
+    @Override
+    public UmsMemberBrandAttention detail(Long brandId) {
+        UmsMember currentMember = memberService.getCurrentMember();
+        return memberBrandAttentionRepository.findByMemberIdAndBrandId(currentMember.getId(),brandId);
     }
 
 }

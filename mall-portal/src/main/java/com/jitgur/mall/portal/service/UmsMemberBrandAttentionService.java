@@ -26,7 +26,7 @@ public interface UmsMemberBrandAttentionService {
     /**
      * 根据品牌名称查找品牌关注详情
      */
-    List<UmsMemberBrandAttention> list(String brandName);
+    List<UmsMemberBrandAttention> listName(String brandName);
 
 
     /**
@@ -39,5 +39,11 @@ public interface UmsMemberBrandAttentionService {
      * 清空关注列表
      */
     void clear();
+
+
+    /**
+     * 获取用户关注详情
+     */
+   UmsMemberBrandAttention detail(Long brandId);
 
 }
