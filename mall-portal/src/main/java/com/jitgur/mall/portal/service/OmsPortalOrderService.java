@@ -1,6 +1,7 @@
 package com.jitgur.mall.portal.service;
 
 import com.jitgur.mall.portal.domain.OmsOrderConfirmation;
+import com.jitgur.mall.portal.domain.OmsOrderDetail;
 import com.jitgur.mall.portal.domain.OmsOrderParam;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,12 +57,30 @@ public interface OmsPortalOrderService {
      * 支付成功后回调
      */
     @Transactional
-    Integer paySuccess(Long orderId,Integer payType);
+    Integer paySuccess(Long orderId, Integer payType);
 
 
     /**
      * 确认收货
      */
     void confirmOrderReceive(Long orderId);
+
+
+    /**
+     * 分页获取用户订单
+     */
+    List<OmsOrderDetail> listPage(Integer status, Integer pageNum, Integer pageSize);
+
+
+    /**
+     * 根据订单id获取订单详情
+     */
+    OmsOrderDetail getOrderDetail(Long orderId);
+
+
+    /**
+     * 删除指定订单
+     */
+    void delete(Long orderId);
 
 }

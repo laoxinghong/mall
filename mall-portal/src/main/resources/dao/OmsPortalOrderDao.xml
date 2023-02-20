@@ -24,16 +24,63 @@
     </select>
 
     <select id="getOrderDetail" resultMap="orderDetailMap">
-        SELECT o.id,
-               o.member_id,
-               o.coupon_id,
-               o.use_integration,
-               oi.id               item_id,
-               oi.product_sku_id   item_product_sku_id,
-               oi.product_quantity item_product_quantity
+        SELECT o.*,
+               oi.id                  item_id,
+               oi.order_id            item_order_id,
+               oi.order_sn            item_order_sn,
+               oi.product_id          item_product_id,
+               oi.product_pic         item_product_pic,
+               oi.product_name        item_product_name,
+               oi.product_brand       item_product_brand,
+               oi.product_sn          item_product_sn,
+               oi.product_price       item_product_price,
+               oi.product_quantity    item_product_quantity,
+               oi.product_sku_id      item_product_sku_id,
+               oi.product_sku_code    item_product_sku_code,
+               oi.product_category_id item_product_category_id,
+               oi.promotion_name      item_promotion_name,
+               oi.promotion_amount    item_promotion_amount,
+               oi.coupon_amount       item_coupon_amount,
+               oi.integration_amount  item_integration_amount,
+               oi.real_amount         item_real_amount,
+               oi.gift_integration    item_gift_integration,
+               oi.gift_growth         item_gift_growth,
+               oi.product_attr        item_product_attr
         FROM oms_order o
                  LEFT JOIN oms_order_item oi ON oi.order_id = o.id
         WHERE o.id = #{orderId}
+    </select>
+
+    <select id="listPage" resultMap="orderDetailMap">
+        SELECT o.*,
+               oi.id                  item_id,
+               oi.order_id            item_order_id,
+               oi.order_sn            item_order_sn,
+               oi.product_id          item_product_id,
+               oi.product_pic         item_product_pic,
+               oi.product_name        item_product_name,
+               oi.product_brand       item_product_brand,
+               oi.product_sn          item_product_sn,
+               oi.product_price       item_product_price,
+               oi.product_quantity    item_product_quantity,
+               oi.product_sku_id      item_product_sku_id,
+               oi.product_sku_code    item_product_sku_code,
+               oi.product_category_id item_product_category_id,
+               oi.promotion_name      item_promotion_name,
+               oi.promotion_amount    item_promotion_amount,
+               oi.coupon_amount       item_coupon_amount,
+               oi.integration_amount  item_integration_amount,
+               oi.real_amount         item_real_amount,
+               oi.gift_integration    item_gift_integration,
+               oi.gift_growth         item_gift_growth,
+               oi.product_attr        item_product_attr
+        FROM oms_order o
+                 LEFT JOIN oms_order_item oi ON oi.order_id = o.id
+        WHERE o.member_id = #{memberId}
+          <if test="#{status}!=null">
+              AND o.status = #{status}
+          </if>
+        ORDER BY o.create_time DESC
     </select>
 
     <update id="releaseProductLockStock">

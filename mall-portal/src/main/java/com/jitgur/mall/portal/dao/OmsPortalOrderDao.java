@@ -41,4 +41,11 @@ public interface OmsPortalOrderDao {
      */
     OmsOrderDetail getOrderDetail(@Param("orderId") Long orderId);
 
+
+    /**
+     * 分页获取用户订单详情
+     */
+    List<OmsOrderDetail> listPage(@Param("memberId") Long memberId, @Param("status") Integer status);
+
+
 }

@@ -1,6 +1,7 @@
 package com.jitgur.mall.portal.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import com.github.pagehelper.PageHelper;
 import com.jitgur.mall.common.exception.Asserts;
 import com.jitgur.mall.common.service.RedisService;
 import com.jitgur.mall.mbg.mapper.OmsOrderItemMapper;
@@ -589,6 +590,36 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         order.setConfirmStatus(1);
         order.setReceiverTime(new Date());
         orderMapper.updateByPrimaryKeySelective(order);
+    }
+
+
+    @Override
+    public List<OmsOrderDetail> listPage(Integer status, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        UmsMember currentMember = memberService.getCurrentMember();
+        return orderDao.listPage(currentMember.getId(), status);
+    }
+
+
+    @Override
+    public OmsOrderDetail getOrderDetail(Long orderId) {
+        return orderDao.getOrderDetail(orderId);
+    }
+
+
+    @Override
+    public void delete(Long orderId) {
+        UmsMember currentMember = memberService.getCurrentMember();
+        OmsOrder order = orderMapper.selectByPrimaryKey(orderId);
+        if (!currentMember.getId().equals(order.getMemberId())) {
+            Asserts.fail("不能删除他人的订单");
+        }
+        if (order.getStatus() == 3 || order.getStatus() == 4) {
+            order.setDeleteStatus(1);
+            orderMapper.updateByPrimaryKeySelective(order);
+        } else {
+            Asserts.fail("对不起，当前订单还未完成");
+        }
     }
 
 }
