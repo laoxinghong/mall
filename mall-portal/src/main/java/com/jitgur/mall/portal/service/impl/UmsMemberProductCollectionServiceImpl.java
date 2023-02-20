@@ -71,10 +71,17 @@ public class UmsMemberProductCollectionServiceImpl implements UmsMemberProductCo
 
 
     @Override
-    public List<UmsMemberProductCollection> list(String productName) {
+    public List<UmsMemberProductCollection> listName(String productName) {
         UmsMember currentMember = memberService.getCurrentMember();
         List<UmsMemberProductCollection> allCollection = memberProductCollectionRepository.findAllByMemberId(currentMember.getId());
         return allCollection.stream().filter(item -> item.getProductName().contains(productName)).collect(Collectors.toList());
+    }
+
+
+    @Override
+    public UmsMemberProductCollection detail(Long productId) {
+        UmsMember currentMember = memberService.getCurrentMember();
+        return memberProductCollectionRepository.findByMemberIdAndProductId(currentMember.getId(),productId);
     }
 
 }

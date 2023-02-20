@@ -38,6 +38,12 @@ public interface UmsMemberProductCollectionService {
     /**
      * 根据商品名称查询用户商品收藏信息
      */
-    List<UmsMemberProductCollection> list(String productName);
+    List<UmsMemberProductCollection> listName(String productName);
+
+
+    /**
+     * 获取商品收藏详情
+     */
+    UmsMemberProductCollection detail(Long productId);
 
 }
