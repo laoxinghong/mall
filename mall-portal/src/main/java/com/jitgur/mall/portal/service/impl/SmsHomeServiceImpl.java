@@ -13,6 +13,7 @@ import com.jitgur.mall.portal.domain.SmsHomeFlashPromotion;
 import com.jitgur.mall.portal.service.SmsHomeService;
 import com.jitgur.mall.portal.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +23,7 @@ import java.util.List;
  * 首页内容管理service实现类
  * Created by jitgur on 20230214
  */
+@Service
 public class SmsHomeServiceImpl implements SmsHomeService {
 
     @Autowired
