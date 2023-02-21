@@ -58,7 +58,7 @@ public class UmsAdminController {
     @ApiOperation("根据用户id获取后台用户")
     @RequestMapping(value = "/getUserByAdminId/{adminId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<UmsAdmin> getUserByAdminId(@PathVariable("adminId") Long adminId) {
+    public CommonResult<UmsAdmin> getUserByAdminId(@PathVariable Long adminId) {
         UmsAdmin admin = adminService.getUserByAdminId(adminId);
         if (admin == null) {
             return CommonResult.failed("没有该用户");
@@ -71,7 +71,7 @@ public class UmsAdminController {
     @ApiOperation("删除指定用户")
     @RequestMapping(value = "/delete/{adminId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> delete(@PathVariable("adminId") Long adminId) {
+    public CommonResult<Integer> delete(@PathVariable Long adminId) {
         int delete = adminService.delete(adminId);
         if (delete > 0) {
             return CommonResult.success(delete);
@@ -84,7 +84,7 @@ public class UmsAdminController {
     @ApiOperation("获取用户对应的资源列表")
     @RequestMapping(value = "/getResourceList/{adminId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<List<UmsResource>> getResourceList(@PathVariable("adminId") Long adminId) {
+    public CommonResult<List<UmsResource>> getResourceList(@PathVariable Long adminId) {
         List<UmsResource> resourceList = adminService.getResourceList(adminId);
         return CommonResult.success(resourceList);
     }
@@ -93,7 +93,7 @@ public class UmsAdminController {
     @ApiOperation("修改用户角色对应关系")
     @RequestMapping(value = "updateRole", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> updateRole(@RequestParam("adminId") Long adminId,
+    public CommonResult<Integer> updateRole(@RequestParam Long adminId,
                                             @RequestParam("list") List<Long> roleIds) {
         int update = adminService.updateRole(adminId, roleIds);
         if (update > 0) {
@@ -107,7 +107,7 @@ public class UmsAdminController {
     @ApiOperation("获取用户对应的角色列表")
     @RequestMapping(value = "/getRoleList/{adminId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<List<UmsRole>> getRoleList(@PathVariable("adminId") Long adminId) {
+    public CommonResult<List<UmsRole>> getRoleList(@PathVariable Long adminId) {
         List<UmsRole> roleList = adminService.getRoleList(adminId);
         return CommonResult.success(roleList);
     }
@@ -116,7 +116,7 @@ public class UmsAdminController {
     @ApiOperation("更新指定用户信息")
     @RequestMapping(value = "/update/{adminId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> update(@PathVariable("adminId") Long adminId,
+    public CommonResult<Integer> update(@PathVariable Long adminId,
                                         @RequestBody UmsAdmin admin) {
         int update = adminService.update(adminId, admin);
         if (update > 0) {
