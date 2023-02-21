@@ -35,7 +35,7 @@ public class OmsPortalOrderReturnApplyController {
         if (result > 0) {
             return CommonResult.success(result);
         } else {
-            return CommonResult.failed();
+            return CommonResult.failed("当前订单不存在");
         }
     }
 

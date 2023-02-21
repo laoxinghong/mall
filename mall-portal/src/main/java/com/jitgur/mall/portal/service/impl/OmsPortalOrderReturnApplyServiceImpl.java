@@ -1,6 +1,9 @@
 package com.jitgur.mall.portal.service.impl;
 
+import com.jitgur.mall.common.exception.Asserts;
+import com.jitgur.mall.mbg.mapper.OmsOrderMapper;
 import com.jitgur.mall.mbg.mapper.OmsOrderReturnApplyMapper;
+import com.jitgur.mall.mbg.model.OmsOrder;
 import com.jitgur.mall.mbg.model.OmsOrderReturnApply;
 import com.jitgur.mall.portal.domain.OmsPortalOrderReturnApplyParam;
 import com.jitgur.mall.portal.service.OmsPortalOrderReturnApplyService;
@@ -19,9 +22,21 @@ public class OmsPortalOrderReturnApplyServiceImpl implements OmsPortalOrderRetur
 
     @Autowired
     private OmsOrderReturnApplyMapper applyMapper;
+    @Autowired
+    private OmsOrderMapper orderMapper;
+
 
     @Override
     public int create(OmsPortalOrderReturnApplyParam applyParam) {
+        OmsOrder order = orderMapper.selectByPrimaryKey(applyParam.getOrderId());
+        if (order == null) {
+            return 0;
+        }
+        if (order.getDeleteStatus() == 1 || (order.getStatus() != 1 && order.getStatus() != 2 && order.getStatus() != 3)) {
+            Asserts.fail("当前订单不能申请退款");
+        }
+        order.setStatus(5);
+        orderMapper.updateByPrimaryKeySelective(order);
         OmsOrderReturnApply orderReturnApply = new OmsOrderReturnApply();
         BeanUtils.copyProperties(applyParam, orderReturnApply);
         orderReturnApply.setCreateTime(new Date());
