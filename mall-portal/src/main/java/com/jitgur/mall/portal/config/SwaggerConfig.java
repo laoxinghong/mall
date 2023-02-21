@@ -19,7 +19,7 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
                 .apiBasePackage("com.jitgur.mall.portal.controller")
-                .title("门户系统")
+                .title("前台商城系统")
                 .description("前端调用相关接口文档")
                 .contactName("jitgur")
                 .version("1.0")

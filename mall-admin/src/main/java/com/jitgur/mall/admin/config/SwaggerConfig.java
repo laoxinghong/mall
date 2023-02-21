@@ -22,6 +22,7 @@ public class SwaggerConfig extends BaseSwaggerConfig {
                 .apiBasePackage("com.jitgur.mall.admin.controller")
                 .title("后台系统")
                 .description("后台相关接口文档")
+                .contactName("jitgur")
                 .version("1.0")
                 .enableSecurity(true)
                 .build();
