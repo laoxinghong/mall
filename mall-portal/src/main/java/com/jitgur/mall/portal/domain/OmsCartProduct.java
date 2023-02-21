@@ -1,5 +1,6 @@
 package com.jitgur.mall.portal.domain;
 
+import com.jitgur.mall.mbg.model.PmsProduct;
 import com.jitgur.mall.mbg.model.PmsProductAttribute;
 import com.jitgur.mall.mbg.model.PmsSkuStock;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 @Setter
 @Getter
-public class OmsCartProduct {
+public class OmsCartProduct extends PmsProduct {
 
     @ApiModelProperty("商品属性列表")
     private List<PmsProductAttribute> productAttributeList;
