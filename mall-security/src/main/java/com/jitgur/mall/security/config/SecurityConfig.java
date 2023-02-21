@@ -39,7 +39,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry urlRegistry = httpSecurity.authorizeRequests();
 
-        // 不需要保护的资源路径直接放行
+        // 安全白名单直接放行
         for (String url : ignoreUrlsConfig.getUrls()) {
             urlRegistry.antMatchers(url)
                     .permitAll();
