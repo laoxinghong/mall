@@ -14,8 +14,8 @@ spring:
 
 mybatis:
   mapper-locations:
-    -classpath:dao/*.xml
-    -classpath*:com/**/mapper/*.xml
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
 
 jwt:
   tokenHeader: Authorization #jwt存储的请求头
@@ -23,31 +23,36 @@ jwt:
   expiration: 604800 #jwt的超时时间(60*60*24*7)
   tokenHead: 'Bearer' #jwt负载中拿到的开头
 
+
 secure:
-  ignore:
-    url: #安全路径白名单
-      -/swagger-ui/
-      -/swagger-resources/**
-      -/**/v2/api-docs
-      -/**/*.html
-      -/**/*.js
-      -/**/*.css
-      -/**/*.png
-      -/**/*.map
-      -/favicon.ico
-      -/druid/**
-      -/actuator/**
-      -/sso/**
-      -/home/**
-      -/product/**
-      -/brand/**
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui/
+      - /swagger-resources/**
+      - /**/v2/api-docs
+      - /**/*.html
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.map
+      - /favicon.ico
+      - /druid/**
+      - /actuator/**
+      - /admin/login
+      - /admin/registry
+      - /admin/info
+      - /admin/logout
+      - /minio/upload
+      - /admin/getRoleList/**
+      - /admin/getResourceList/**
+
 
 # redis key
 redis:
   database: mall
   key:
     admin: 'ums:admin'
-    resourceList: 'ums:resourceList''
+    resourceList: 'ums:resourceList'
   expire:
     common: 86400
 
@@ -57,7 +62,7 @@ aliyun:
     endpoint: oss-cn-shenzhen.aliyuncs.com #oss对外服务的访问域名
     accessKeyId: test #访问身份验证中用到的用户标识
     accessKeySecret: test #用户用于加密签名字符串与oss用户验证签名字符串使用的密钥
-    bucketName: mall-jitgur #oss存储空间
+    bucketName: mall #oss存储空间
     policy:
       expire: 300 #签名有效期
     maxSize: 10 #上传文件限制大小

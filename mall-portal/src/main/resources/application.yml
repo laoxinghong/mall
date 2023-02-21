@@ -8,8 +8,8 @@ spring:
       matching-strategy: ant_path_matcher
 mybatis:
   mapper-locations:
-    -classpath:dao/*.xml
-    -classpath*:com/**/mapper/*.xml
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
 
 jwt:
   tokenHeader: Authorization #jwt存储的请求头
@@ -18,23 +18,24 @@ jwt:
   tokenHead: 'Bearer' #jwt负载中拿到的开头
 
 secure:
-  ignore:
-    url: #白名单
-      -/swagger-ui/
-      -/swagger-resources/**
-      -/**/v2/api-docs
-      -/**/*.html
-      -/**/*.js
-      -/**/*.css
-      -/**/*.png
-      -/**/*.map
-      -/favicon.ico
-      -/druid/**
-      -/actuator/**
-      -/sso/**
-      -/home/**
-      -/product/**
-      -/brand/**
+  ignored:
+    urls: #白名单
+      - /swagger-ui/
+      - /swagger-resources/**
+      - /**/v2/api-docs
+      - /**/*.html
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.map
+      - /favicon.ico
+      - /druid/**
+      - /actuator/**
+      - /sso/**
+      - /home/**
+      - /product/**
+      - /brand/**
+      - /**
 
 # 自定义redis key
 redis:
