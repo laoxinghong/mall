@@ -33,7 +33,7 @@ public interface OmsPortalOrderDao {
     /**
      * 更新商品库存
      */
-    Integer updateProductSkuStock(@Param("list") List<OmsOrderItem> orderItemList);
+    int updateProductSkuStock(@Param("list") List<OmsOrderItem> orderItemList);
 
 
     /**

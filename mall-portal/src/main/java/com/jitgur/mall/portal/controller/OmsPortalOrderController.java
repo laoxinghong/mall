@@ -61,27 +61,27 @@ public class OmsPortalOrderController {
 
 
     @ApiOperation("取消订单")
-    @RequestMapping(value = "/cancelOrder/#{orderId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/cancelOrder/{orderId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> cancelOrder(@PathVariable("orderId") Long orderId) {
+    public CommonResult<String> cancelOrder(@PathVariable Long orderId) {
         orderService.cancelOrder(orderId);
         return CommonResult.success(null);
     }
 
 
     @ApiOperation("支付成功后回调")
-    @RequestMapping(value = "/paySuccess/#{orderId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/paySuccess/{orderId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> paySuccess(@PathVariable("orderId") Long orderId, @RequestParam Integer payType) {
+    public CommonResult<Integer> paySuccess(@PathVariable Long orderId, @RequestParam Integer payType) {
         Integer integer = orderService.paySuccess(orderId, payType);
         return CommonResult.success(integer);
     }
 
 
     @ApiOperation("确认收货")
-    @RequestMapping(value = "/confirmOrderReceive/#{orderId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/confirmOrderReceive/{orderId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> confirmOrderReceive(@PathVariable("orderId") Long orderId) {
+    public CommonResult<String> confirmOrderReceive(@PathVariable Long orderId) {
         orderService.confirmOrderReceive(orderId);
         return CommonResult.success(null);
     }
@@ -100,18 +100,18 @@ public class OmsPortalOrderController {
 
 
     @ApiOperation("根据id获取订单详情")
-    @RequestMapping(value = "/getOrderDetail/#{orderId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getOrderDetail/{orderId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<OmsOrderDetail> getOrderDetail(@PathVariable("orderId") Long orderId) {
+    public CommonResult<OmsOrderDetail> getOrderDetail(@PathVariable Long orderId) {
         OmsOrderDetail orderDetail = orderService.getOrderDetail(orderId);
         return CommonResult.success(orderDetail);
     }
 
 
     @ApiOperation("删除指定订单")
-    @RequestMapping(value = "/delete/#{orderId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{orderId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> delete(@PathVariable("orderId") Long orderId) {
+    public CommonResult<String> delete(@PathVariable Long orderId) {
         orderService.delete(orderId);
         return CommonResult.success(null);
     }
