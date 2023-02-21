@@ -23,10 +23,9 @@
     <modules>
         <module>mall-admin</module>
         <module>mall-common</module>
-        <!--        <module>mall-demo</module>-->
         <module>mall-mbg</module>
-        <!--        <module>mall-portal</module>-->
-        <!--        <module>mall-search</module>-->
+        <module>mall-portal</module>
+        <module>mall-search</module>
         <module>mall-security</module>
     </modules>
 
@@ -125,7 +124,7 @@
             </dependency>
             <!--			mybatis分页插件starter-->
             <dependency>
-                <groupId>com.gitHub.pagehelper</groupId>
+                <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper-starter.version}</version>
             </dependency>
