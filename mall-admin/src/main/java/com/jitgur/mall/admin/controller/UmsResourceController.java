@@ -18,7 +18,7 @@ import java.util.List;
  * Created by jitgur on 20230208
  */
 @Api(tags = "UmsResourceController")
-@Tag(name = "UmsResource", description = "后台资源管理")
+@Tag(name = "UmsResourceController", description = "后台资源管理")
 @Controller
 @RequestMapping("/resource")
 public class UmsResourceController {
@@ -43,7 +43,7 @@ public class UmsResourceController {
     @ApiOperation("修改指定资源")
     @RequestMapping(value = "/update/{resourceId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> update(@PathVariable("resourceId") Long resourceId,
+    public CommonResult<Integer> update(@PathVariable Long resourceId,
                                         @RequestBody UmsResource resource) {
         int update = resourceService.update(resourceId, resource);
         if (update > 0) {
@@ -57,7 +57,7 @@ public class UmsResourceController {
     @ApiOperation("删除指定资源")
     @RequestMapping(value = "/delete/{resourceId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> delete(@PathVariable("resourceId") Long resourceId) {
+    public CommonResult<Integer> delete(@PathVariable Long resourceId) {
         int delete = resourceService.delete(resourceId);
         if (delete > 0) {
             return CommonResult.success(delete);
@@ -70,7 +70,7 @@ public class UmsResourceController {
     @ApiOperation("获取指定资源")
     @RequestMapping(value = "/getItem/{resourceId}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<UmsResource> getItem(@PathVariable("resourceId") Long resourceId) {
+    public CommonResult<UmsResource> getItem(@PathVariable Long resourceId) {
         UmsResource resource = resourceService.getItem(resourceId);
         if (resource == null) {
             return CommonResult.failed("当前资源不存在");
