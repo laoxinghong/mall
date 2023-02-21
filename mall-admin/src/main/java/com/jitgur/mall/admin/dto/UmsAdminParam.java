@@ -1,13 +1,18 @@
 package com.jitgur.mall.admin.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 /**
  * 用户注册信息封装
  * Created by jitgur on 20230207
  */
+@Getter
+@Setter
 public class UmsAdminParam {
 
     @NotEmpty
@@ -18,6 +23,7 @@ public class UmsAdminParam {
     @ApiModelProperty(value = "密码", required = true)
     private String password;
 
+    @Email
     @ApiModelProperty(value = "邮箱")
     private String email;
 
