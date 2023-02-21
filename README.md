@@ -1,18 +1,19 @@
-mall商城是一套电商管理系统，包括前台商城系统和后台管理系统， 基于
-Springboot+Mybatis实现。 前台商城系统包括首页内容管理、商品搜索、 商品
-推荐、购物车管理、订单管理、会员管理等模块。
-
-
-
-mall
-├── mall-admin -- 后台管理系统模块
-├── mall-common -- 工具类及通用代码模块
-├── mall-mbg -- MyBatisGenerator生成的数据层代码模块
-├── mall-portal -- 前台商城系统模块
-├── mall-search -- 基于ElasticSearch的商品搜索系统模块
-└──mall-security -- 基于SpringSecurity的安全认证模块
-
-
+<p class="MsoNormal"><span lang="EN-US">mall</span>商城是一套电商管理系统，包括前台商<span class="GramE">城系统</span>和后台管理系统， 基于<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal"><span class="SpellE"><span lang="EN-US">Springboot+Mybatis</span></span>实现。
+前台商<span class="GramE">城系统</span>包括首页内容管理、商品搜索、 商品<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">推荐、购物车管理、订单管理、会员管理等模块。<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US">mall<o:p></o:p></span></p>
+<p class="MsoNormal">├──<span lang="EN-US"> mall-admin -- </span>后台管理系统模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">├──<span lang="EN-US"> mall-common -- </span>工具类及通用代码模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">├──<span lang="EN-US"> mall-portal -- </span>前台商<span class="GramE">城系统</span>模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">├──<span lang="EN-US"> mall-search -- </span>基于<span class="SpellE"><span lang="EN-US">ElasticSearch</span></span>的商品搜索系统模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">└──<span lang="EN-US">mall-security -- </span>基于<span class="SpellE"><span lang="EN-US">SpringSecurity</span></span>的安全认证模块</p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-top-alt:solid windowtext .5pt;
  mso-border-bottom-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:
  0cm 5.4pt 0cm 5.4pt;mso-border-insideh:none;mso-border-insidev:none">
@@ -230,17 +231,18 @@ mall
   </td>
  </tr>
 </tbody></table>
-
-
-数据库表前缀说明
-pms_：商品模块相关
-oms_：订单模块相关
-sms_：营销模块相关
-ums_：用户模块相关
-cms_：内容模块相关
-
-
-
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal">数据库表前缀说明<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">pms_：商品模块相关<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">oms_：订单模块相关<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">sms_：营销模块相关<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">ums_：用户模块相关<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">cms_：内容模块相关<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 mall实现的功能概览
 商品模块
     商品管理
