@@ -30,7 +30,7 @@ public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
     private String REDIS_KEY_ADMIN;
     @Value("${redis.key.resourceList}")
     private String REDIS_KEY_RESOURCE_LIST;
-    @Value("${redis.expire}")
+    @Value("${redis.expire.common}")
     private Long REDIS_EXPIRE;
     @Autowired
     private RedisService redisService;
