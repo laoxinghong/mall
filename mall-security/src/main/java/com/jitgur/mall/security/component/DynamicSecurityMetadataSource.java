@@ -1,11 +1,13 @@
 package com.jitgur.mall.security.component;
 
-import cn.hutool.core.text.AntPathMatcher;
+
 import cn.hutool.core.util.URLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
+import org.springframework.util.AntPathMatcher;
+import org.springframework.util.PathMatcher;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -59,9 +61,9 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
         String path = URLUtil.getPath(url);
 
         // 获取访问当前路径所需的资源
-        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        PathMatcher pathMatcher = new AntPathMatcher();
         for (String pattern : configAttributeMap.keySet()) {
-            if (antPathMatcher.match(pattern, path)) {
+            if (pathMatcher.match(pattern, path)) {
                 configAttributes.add(configAttributeMap.get(pattern));
             }
         }
