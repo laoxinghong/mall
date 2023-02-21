@@ -3,16 +3,12 @@
 前台商<span class="GramE">城系统</span>包括首页内容管理、商品搜索、 商品<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">推荐、购物车管理、订单管理、会员管理等模块。<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 <p class="MsoNormal"><span lang="EN-US">mall<o:p></o:p></span></p>
 <p class="MsoNormal">├──<span lang="EN-US"> mall-admin -- </span>后台管理系统模块<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">├──<span lang="EN-US"> mall-common -- </span>工具类及通用代码模块<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">├──<span lang="EN-US"> mall-portal -- </span>前台商<span class="GramE">城系统</span>模块<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">├──<span lang="EN-US"> mall-search -- </span>基于<span class="SpellE"><span lang="EN-US">ElasticSearch</span></span>的商品搜索系统模块<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">└──<span lang="EN-US">mall-security -- </span>基于<span class="SpellE"><span lang="EN-US">SpringSecurity</span></span>的安全认证模块</p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 <p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-top-alt:solid windowtext .5pt;
  mso-border-bottom-alt:solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:
@@ -232,8 +228,6 @@
  </tr>
 </tbody></table>
 <p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 <p class="MsoNormal">数据库表前缀说明<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">pms_：商品模块相关<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">oms_：订单模块相关<span lang="EN-US"><o:p></o:p></span></p>
@@ -241,27 +235,25 @@
 <p class="MsoNormal">ums_：用户模块相关<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">cms_：内容模块相关<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
-mall实现的功能概览
-商品模块
-    商品管理
-    商品促销管理
-    商品品牌管理
-    商品分类管理
-    商品属性管理
-订单模块
-    订单管理
-    购物车管理
-    退货管理
-营销模块
-    优惠券管理
-    首页广告
-    新品推荐
-    热门商品推荐
-    专题管理
-    秒杀活动管理
-用户模块
-    后台用户管理
-    后台资源管理
-    会员管理
+<p class="MsoNormal">mall实现的功能概览<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">商品模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    商品管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    商品促销管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    商品品牌管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    商品分类管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    商品属性管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">订单模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    订单管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    购物车管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    退货管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">营销模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    优惠券管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    首页广告<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    新品推荐<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    热门商品推荐<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    专题管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    秒杀活动管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">用户模块<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    后台用户管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    后台资源管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    会员管理<span lang="EN-US"><o:p></o:p></span></p>
