@@ -130,7 +130,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     }
 
 
-    public Boolean verifyAuthCode(String authCode, String telephone) {
+    public boolean verifyAuthCode(String authCode, String telephone) {
         if (StringUtil.isEmpty(authCode)) {
             return false;
         }
@@ -187,7 +187,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     @Override
     public void registry(String username, String password, String telephone, String authCode) {
 
-        if (!verifyAuthCode(telephone, authCode)) {
+        if (!verifyAuthCode( authCode,telephone)) {
             Asserts.fail("验证码错误");
         }
 

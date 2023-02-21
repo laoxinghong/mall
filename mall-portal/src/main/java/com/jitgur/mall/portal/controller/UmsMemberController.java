@@ -47,9 +47,9 @@ public class UmsMemberController {
 
 
     @ApiOperation("根据id获取会员")
-    @RequestMapping(value = "/getUserById/#{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUserById/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<UmsMember> getUserById(@PathVariable("id") Long id) {
+    public CommonResult<UmsMember> getUserById(@PathVariable Long id) {
         UmsMember member = memberService.getMemberById(id);
         if (member == null) {
             return CommonResult.failed("当前用户不存在");
@@ -71,9 +71,9 @@ public class UmsMemberController {
 
 
     @ApiOperation("更新会员积分")
-    @RequestMapping(value = "/updateMemberIntegration/#{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateMemberIntegration/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> updateMemberIntegration(@PathVariable("id") Long id, @RequestParam Integer integration) {
+    public CommonResult<String> updateMemberIntegration(@PathVariable Long id, @RequestParam Integer integration) {
         memberService.updateMemberIntegration(id, integration);
         return CommonResult.success("修改成功");
     }
