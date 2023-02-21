@@ -15,24 +15,24 @@ mall
 
 
 mall技术选型
-技术							         			     说明                                 版本
-SpringBoot					            容器+MVC框架                        2.6.7
-SpringSecurity						    认证授权框架                           2.6.7
-MyBatis								    ORM框架	                             3.5.10
-MyBatisGenerator		            数据层代码生成                       1.4.1
-RabbitMQ								消息队列                                   3.10.5     
-Redis									    分布式缓存                               5.0.14.1
-MongoDB					            NoSQL数据库                           5.0  
-ElasticSearch							搜索引擎                                  7.17.3
-LogStash									日志收集工具                           7.17.3    
-Kibana										日志可视化查看工具                7.17.3
-Druid										数据库连接池                           1.2.14
-Hutool										Java工具类库                            5.8.9
-PageHelper								Mybatis分页插件                      5.3.2
-Swagger								    文档生成工具                           3.0.0
-logstash-logback-encoder			Logstash日志收集插件              7.2    
-JWT                                         JWT登录支持                           0.9.1
-Lombok                                    代码简化工具                          1.18.24  
+技术							            说明                                 版本
+SpringBoot					            容器+MVC框架                          2.6.7
+SpringSecurity						    认证授权框架                          2.6.7
+MyBatis								    ORM框架	                            3.5.10
+MyBatisGenerator		                数据层代码生成                        1.4.1
+RabbitMQ								消息队列                              3.10.5     
+Redis									分布式缓存                            5.0.14.1
+MongoDB					                NoSQL数据库                           5.0  
+ElasticSearch							搜索引擎                              7.17.3
+LogStash								日志收集工具                          7.17.3    
+Kibana									日志可视化查看工具                    7.17.3
+Druid									数据库连接池                          1.2.14
+Hutool									Java工具类库                          5.8.9
+PageHelper								Mybatis分页插件                       5.3.2
+Swagger								    文档生成工具                          3.0.0
+logstash-logback-encoder			    Logstash日志收集插件                  7.2    
+JWT                                     JWT登录支持                           0.9.1
+Lombok                                  代码简化工具                          1.18.24  
 
 
 
