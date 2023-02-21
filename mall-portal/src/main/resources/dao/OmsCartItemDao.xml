@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper>
+<mapper namespace="com.jitgur.mall.portal.dao.OmsCartItemDao">
     <resultMap id="cartProductMap" type="com.jitgur.mall.portal.domain.OmsCartProduct"
                extends="com.jitgur.mall.mbg.mapper.PmsProductMapper.BaseResultMap" autoMapping="true">
         <id property="id" jdbcType="BIGINT" column="id"/>
