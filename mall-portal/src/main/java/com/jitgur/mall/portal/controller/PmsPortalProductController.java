@@ -23,7 +23,7 @@ import java.util.List;
 @Api(tags = "PmsPortalProductController")
 @Tag(name = "PmsPortalProductController", description = "商品管理")
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/portalProduct")
 public class PmsPortalProductController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class PmsPortalProductController {
             @RequestParam(required = false) String keyword,
             @RequestParam(required = false) Long brandId,
             @RequestParam(required = false) Long productCategoryId,
-            @RequestParam(required = false, defaultValue = "0") Integer pageNum,
+            @RequestParam(required = false, defaultValue = "1") Integer pageNum,
             @RequestParam(required = false, defaultValue = "5") Integer pageSize,
             @RequestParam(required = false, defaultValue = "0") Integer sort) {
         List<PmsProduct> productList = productService.search(keyword, brandId, productCategoryId, pageNum, pageSize, sort);
@@ -57,7 +57,7 @@ public class PmsPortalProductController {
 
 
     @ApiOperation("获取前台商品详情")
-    @RequestMapping(value = "/detail/#{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<PmsPortalProductDetail> detail(@PathVariable Long id) {
         PmsPortalProductDetail productDetail = productService.detail(id);
