@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
  * Swagger基础设置
  * Created by jitgur on 20230202
  */
-@Configuration
 public abstract class BaseSwaggerConfig {
 
     /**
