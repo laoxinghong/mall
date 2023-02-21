@@ -40,9 +40,9 @@ public class EsProductController {
 
 
     @ApiOperation("新增es商品")
-    @RequestMapping(value = "/create/#{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<EsProduct> create(@PathVariable("id") Long id) {
+    public CommonResult<EsProduct> create(@PathVariable Long id) {
         EsProduct esProduct = esProductService.create(id);
         if (esProduct == null) {
             return CommonResult.failed("当前商品不存在");
@@ -53,9 +53,9 @@ public class EsProductController {
 
 
     @ApiOperation("删除指定es商品")
-    @RequestMapping(value = "/delete/#{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> delete(@PathVariable("id") Long id) {
+    public CommonResult<String> delete(@PathVariable Long id) {
         esProductService.delete(id);
         return CommonResult.success(null);
     }
@@ -64,7 +64,7 @@ public class EsProductController {
     @ApiOperation("根据id批量删除es商品")
     @RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> deleteAll(@RequestParam("list") List<Long> ids) {
+    public CommonResult<String> deleteAll(@RequestParam List<Long> ids) {
         esProductService.deleteAll(ids);
         return CommonResult.success(null);
     }
@@ -100,9 +100,9 @@ public class EsProductController {
 
 
     @ApiOperation("相关商品推荐")
-    @RequestMapping(value = "/recommend/#{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/recommend/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<EsProduct>> recommend(@PathVariable("id") Long id,
+    public CommonResult<CommonPage<EsProduct>> recommend(@PathVariable Long id,
                                                          @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                                          @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
         Page<EsProduct> esProductPage = esProductService.recommend(id, pageNum, pageSize);

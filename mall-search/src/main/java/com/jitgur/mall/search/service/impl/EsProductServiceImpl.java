@@ -286,11 +286,11 @@ public class EsProductServiceImpl implements EsProductService {
 
         // 商品属性
         Aggregation productAttrs = aggregationMap.get("allAttrValues");
-        List<? extends Terms.Bucket> attrIdList = ((ParsedLongTerms) ((ParsedFilter) ((ParsedNested) productAttrs)
+        List<? extends Terms.Bucket> attrIds = ((ParsedLongTerms) ((ParsedFilter) ((ParsedNested) productAttrs)
                 .getAggregations().get("productAttrs"))
                 .getAggregations().get("attrIds")).getBuckets();
         List<EsProductRelatedInfo.ProductAttr> attrList = new ArrayList<>();
-        for (Terms.Bucket attrId : attrIdList) {
+        for (Terms.Bucket attrId : attrIds) {
             EsProductRelatedInfo.ProductAttr productAttr = new EsProductRelatedInfo.ProductAttr();
             productAttr.setAttrId((Long) attrId.getKey());
 
