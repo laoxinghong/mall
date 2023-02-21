@@ -18,7 +18,7 @@
             #{item.productQuantity,jdbcType=INTEGER},#{item.productSkuId,jdbcType=BIGINT},
             #{item.productSkuCode,jdbcType=VARCHAR},#{item.productCategoryId,jdbcType=BIGINT},
             #{item.promotionName,jdbcType=VARCHAR},#{item.promotionAmount,jdbcType=DECIMAL},
-            #{item.coupomAmount,jdbcType=DECIMAL},#{item.integrationAmount,jdbcType=DECIMAL},
+            #{item.couponAmount,jdbcType=DECIMAL},#{item.integrationAmount,jdbcType=DECIMAL},
             #{item.realAmount,jdbcType=DECIMAL},#{item.giftIntegration,jdbcType=INTEGER},
             #{item.giftGrowth,jdbcType=INTEGER},#{item.productAttr,jdbcType=VARCHAR})
         </foreach>
