@@ -40,7 +40,7 @@ public class UmsMemberProductReadHistoryController {
     @ApiOperation("删除浏览记录")
     @RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> deleteAll(@RequestParam("ids") List<String> ids) {
+    public CommonResult<Integer> deleteAll(@RequestParam List<String> ids) {
         int result = readHistoryService.deleteAll(ids);
         if (result > 0) {
             return CommonResult.success(result);
@@ -51,9 +51,9 @@ public class UmsMemberProductReadHistoryController {
 
 
     @ApiOperation("删除指定浏览记录")
-    @RequestMapping(value = "/delete/#{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<String> delete(@PathVariable("id") String id) {
+    public CommonResult<String> delete(@PathVariable String id) {
         readHistoryService.delete(id);
         return CommonResult.success(null);
     }
