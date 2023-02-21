@@ -10,7 +10,6 @@ import java.util.List;
  * 用户资源关系dao
  * Created by jitgur on 20230207
  */
-@Mapper
 public interface UmsAdminResourceRelationDao {
 
     /**
