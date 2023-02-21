@@ -40,9 +40,9 @@ public class UmsMemberReceiveAddressController {
 
 
     @ApiOperation("删除收货地址")
-    @RequestMapping(value = "/delete/#{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> delete(@PathVariable("id") Long id) {
+    public CommonResult<Integer> delete(@PathVariable Long id) {
         int delete = memberReceiveAddressService.delete(id);
         if (delete > 0) {
             return CommonResult.success(delete);
@@ -53,9 +53,9 @@ public class UmsMemberReceiveAddressController {
 
 
     @ApiOperation("修改收货地址")
-    @RequestMapping(value = "/update/#{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<Integer> update(@PathVariable("id") Long id, @RequestBody UmsMemberReceiveAddress address) {
+    public CommonResult<Integer> update(@PathVariable Long id, @RequestBody UmsMemberReceiveAddress address) {
         int update = memberReceiveAddressService.update(id, address);
         if (update > 0) {
             return CommonResult.success(update);
@@ -75,9 +75,9 @@ public class UmsMemberReceiveAddressController {
 
 
     @ApiOperation("获得指定收货地址")
-    @RequestMapping(value = "/getItem/#{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getItem/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<UmsMemberReceiveAddress> getItem(@PathVariable("id") Long id) {
+    public CommonResult<UmsMemberReceiveAddress> getItem(@PathVariable Long id) {
         UmsMemberReceiveAddress address = memberReceiveAddressService.getItem(id);
         if (address == null) {
             return CommonResult.failed("当前地址不存在");
