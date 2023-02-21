@@ -24,7 +24,6 @@ import java.time.Duration;
  * Redis基础设置
  * Created by jitgur on 20230202
  */
-@Configuration
 public class BaseRedisConfig {
 
     @Bean
