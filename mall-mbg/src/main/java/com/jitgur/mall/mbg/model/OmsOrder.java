@@ -49,7 +49,7 @@ public class OmsOrder implements Serializable {
     @ApiModelProperty(value = "订单来源 0>pc 1>app")
     private Integer sourceType;
 
-    @ApiModelProperty(value = "订单状态 0>待付款 1>待发货 2>已发货 3>已完成 4>已关闭 5>无效订单")
+    @ApiModelProperty(value = "订单状态 0>待付款 1>待发货 2>已发货 3>已完成 4>已关闭 5>退款中 6>无效订单")
     private Integer status;
 
     @ApiModelProperty(value = "订单类型 0>普通订单 1>秒杀订单")
