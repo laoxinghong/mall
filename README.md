@@ -237,23 +237,23 @@
 <p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 <p class="MsoNormal">mall实现的功能概览<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">商品模块<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    商品管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    商品促销管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    商品品牌管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    商品分类管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    商品属性管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">├──商品管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">├──商品促销管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">├──商品品牌管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">├──商品分类管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">└──商品属性管理<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">订单模块<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    订单管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    购物车管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    退货管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    ├──订单管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    ├──购物车管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    └──退货管理<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">营销模块<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    优惠券管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    首页广告<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    新品推荐<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    热门商品推荐<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    专题管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    秒杀活动管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    ├──优惠券管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">   ├── 首页广告<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">   ├── 新品推荐<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">   ├── 热门商品推荐<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">   ├── 专题管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    └──秒杀活动管理<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal">用户模块<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    后台用户管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    后台资源管理<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">    会员管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    ├──后台用户管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    ├──后台资源管理<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">    └──会员管理<span lang="EN-US"><o:p></o:p></span></p>
