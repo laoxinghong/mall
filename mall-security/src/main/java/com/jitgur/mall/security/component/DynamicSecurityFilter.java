@@ -74,4 +74,7 @@ public class DynamicSecurityFilter extends AbstractSecurityInterceptor implement
         }
     }
 
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 }
