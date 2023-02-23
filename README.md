@@ -1,7 +1,7 @@
 <p class="MsoNormal"><span lang="EN-US">mall</span>商城是一套电商管理系统，包括前台商<span class="GramE">城系统</span>和后台管理系统， 基于<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal"><span class="SpellE"><span lang="EN-US">Springboot+Mybatis</span></span>实现。
 前台商<span class="GramE">城系统</span>包括首页内容管理、商品搜索、 商品<span lang="EN-US"><o:p></o:p></span></p>
-<p class="MsoNormal">推荐、购物车管理、订单管理、会员管理等内容。<span lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal">推荐、购物车管理、订单管理、会员管理等模块。<span lang="EN-US"><o:p></o:p></span></p>
 <p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 <p class="MsoNormal"><span lang="EN-US">mall<o:p></o:p></span></p>
 <p class="MsoNormal">├──<span lang="EN-US"> mall-admin -- </span>后台管理系统模块<span lang="EN-US"><o:p></o:p></span></p>
