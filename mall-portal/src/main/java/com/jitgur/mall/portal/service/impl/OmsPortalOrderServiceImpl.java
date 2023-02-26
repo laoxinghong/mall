@@ -296,14 +296,14 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     public void calcCateCouponAmount(List<SmsCouponProductCategoryRelation> categoryRelationList,
                                      BigDecimal couponAmount, List<OmsOrderItem> orderItemList) {
         // 获取指定商品分类的订单商品
-        List<Long> cateIdList = categoryRelationList.stream()
+        Set<Long> cateIds = categoryRelationList.stream()
                 .map(SmsCouponProductCategoryRelation::getProductCategoryId)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
         List<OmsOrderItem> enableList = orderItemList.stream()
-                .filter(item -> cateIdList.contains(item.getProductCategoryId()))
+                .filter(item -> cateIds.contains(item.getProductCategoryId()))
                 .collect(Collectors.toList());
         List<OmsOrderItem> disableList = orderItemList.stream()
-                .filter(item -> !enableList.contains(item))
+                .filter(item -> !cateIds.contains(item.getProductCategoryId()))
                 .collect(Collectors.toList());
         for (OmsOrderItem orderItem : disableList) {
             orderItem.setCouponAmount(new BigDecimal(0));
@@ -318,14 +318,14 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     public void calcProductCouponAmount(List<SmsCouponProductRelation> productRelationList,
                                         BigDecimal couponAmount, List<OmsOrderItem> orderItemList) {
         // 获取指定商品的订单商品
-        List<Long> productIdList = productRelationList.stream()
+        Set<Long> productIds = productRelationList.stream()
                 .map(SmsCouponProductRelation::getProductId)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
         List<OmsOrderItem> enableList = orderItemList.stream()
-                .filter(item -> productIdList.contains(item.getProductId()))
+                .filter(item -> productIds.contains(item.getProductId()))
                 .collect(Collectors.toList());
         List<OmsOrderItem> disableList = orderItemList.stream()
-                .filter(item -> !enableList.contains(item))
+                .filter(item -> !productIds.contains(item.getProductId()))
                 .collect(Collectors.toList());
         for (OmsOrderItem orderItem : disableList) {
             orderItem.setCouponAmount(new BigDecimal(0));
